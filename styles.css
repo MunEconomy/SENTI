@@ -26,6 +26,7 @@ body {
   height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: opacity 0.45s ease;
 }
 
 /* 2. Site Header (Navigation - Scaled Inside Container) */
@@ -2329,6 +2330,42 @@ body:not(.reveal-active) .keyword-img-wrapper {
 .showcase-divider-1 { left: calc(50% + 37px); }
 .showcase-divider-2 { left: calc(79.17% + 20px); }
 
+/* Collection Intro — typography reveal */
+.ci-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.ci-reveal.ci-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Showcase reveal animation — initial hidden state */
+.showcase-col {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* Divider: keep -50% centering, just add 40px offset on top */
+.showcase-divider {
+  opacity: 0;
+  transform: translateY(calc(-50% + 40px));
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* Revealed state */
+.showcase-col.showcase-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.showcase-divider.showcase-revealed {
+  opacity: 0.2;
+  transform: translateY(-50%);
+}
+
 
 /* ==========================================================================
    About Page Layout
@@ -3069,6 +3106,7 @@ body:not(.reveal-active) .product-notes-list {
   left: 40px;
   /* aligned to image list start: sn-products-wrap(80) + first image(63) = 143px */
   top: 143px;
+  z-index: 10;
 }
 
 .sn-cat {
@@ -3863,3 +3901,574 @@ body.page-sentir {
 .sr-bw-3 { left: 1048px; }
 .sr-bw-4 { left: 1358px; }
 .sr-bw-5 { left: 1668px; }
+
+
+/* ==========================================================================
+   Product Detail Page  (pd- prefix, 1920 × 3244 design space)
+   ========================================================================== */
+
+body.page-product-detail {
+  background: #ffffff;
+  --text-color: #000000;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: auto;
+  transition: opacity 0.45s ease;
+}
+
+/* Entrance animation — viewport hidden until reveal-active */
+.page-product-detail .pd-viewport {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.reveal-active .pd-viewport {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fixed nav header */
+.pd-header-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(80px * var(--scale-factor));
+  z-index: 1000;
+  background: #ffffff;
+}
+
+/* Scale wrapper — handles only positioning/scale so .site-header animation transform is unaffected */
+.pd-header-scaler {
+  position: absolute;
+  top: 0;
+  left: max(0px, calc(50vw - 960px * var(--scale-factor)));
+  width: 1920px;
+  height: 80px;
+  transform-origin: top left;
+  transform: scale(var(--scale-factor));
+}
+
+.pd-header-wrap .site-header {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  padding: 0 40px;
+  /* transform intentionally NOT set here — lets the slide-down animation work */
+}
+
+/* Scrollable viewport */
+.pd-viewport {
+  position: relative;
+  width: 100vw;
+  height: calc(3244px * var(--scale-factor));
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: #ffffff;
+  overflow: visible;
+}
+
+/* Scaled container — 1920 × 3244 */
+.pd-container {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0) scale(var(--scale-factor));
+  transform-origin: top center;
+  width: 1920px;
+  height: 3244px;
+  flex-shrink: 0;
+  background: #ffffff;
+}
+
+/* ── Back button ── */
+.pd-back-btn {
+  position: absolute;
+  left: 61px;
+  top: 99px;
+  width: 15px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  z-index: 10;
+}
+
+/* ── Main product image ── */
+.pd-main-img-wrap {
+  position: absolute;
+  left: 118px;
+  top: 80px;
+  width: 910px;
+  height: 1000px;
+  overflow: hidden;
+}
+.pd-main-img-wrap img {
+  position: absolute;
+  width: 100%;
+  height: 121.35%;
+  left: 0.03%;
+  top: -12.63%;
+  max-width: none;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Product title ── */
+.pd-product-title {
+  position: absolute;
+  left: 1048px;
+  top: 100px;
+  font-family: var(--font-kr);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.6;
+  letter-spacing: 0.48px;
+  color: #000;
+  white-space: nowrap;
+  margin: 0;
+}
+
+/* ── Meta (date/brand) — right aligned ── */
+.pd-product-meta {
+  position: absolute;
+  right: 40px;
+  top: 100px;
+  font-family: var(--font-kr);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: 0.36px;
+  color: #000;
+  text-align: right;
+  margin: 0;
+}
+
+/* ── Price ── */
+.pd-price {
+  position: absolute;
+  right: 40px;
+  top: 204px;
+  font-family: var(--font-kr);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.6;
+  letter-spacing: 0.48px;
+  color: #000;
+  margin: 0;
+}
+
+/* ── Description ── */
+.pd-description {
+  position: absolute;
+  left: 1048px;
+  top: 216px;
+  font-family: var(--font-kr);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 0.28px;
+  color: #000;
+}
+.pd-description p { margin: 0; }
+
+/* ── Location label ── */
+.pd-label-location {
+  position: absolute;
+  left: 1048px;
+  top: 664px;
+  font-family: var(--font-kr);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: 0.36px;
+  color: #000;
+  margin: 0;
+}
+
+/* ── Location name (right column) ── */
+.pd-location-name {
+  position: absolute;
+  left: 1360px;
+  top: 664px;
+  font-family: var(--font-kr);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: 0.36px;
+  color: #000;
+  margin: 0;
+}
+
+/* ── Location coordinates ── */
+.pd-location-info {
+  position: absolute;
+  left: 1048px;
+  top: 753px;
+  font-family: var(--font-kr);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 0.28px;
+  color: #000;
+}
+.pd-location-info p { margin: 0; }
+
+/* ── Atmosphere description (right of coords) ── */
+.pd-location-atm {
+  position: absolute;
+  left: 1360px;
+  top: 753px;
+  font-family: var(--font-kr);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 0.28px;
+  color: #000;
+  margin: 0;
+}
+
+/* ── Scent notes ── */
+.pd-note {
+  position: absolute;
+  top: 859px;
+  font-family: var(--font-kr);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.6;
+  letter-spacing: 0.24px;
+  color: #000;
+  margin: 0;
+  white-space: nowrap;
+}
+.pd-note-fog   { left: 1048px; }
+.pd-note-cedar { left: 1156px; }
+.pd-note-white { left: 1294px; }
+.pd-note-musk  { left: 1358px; }
+.pd-note-wood  { left: 1513px; }
+.pd-note-air   { left: 1664px; }
+
+/* ── Divider lines ── */
+.pd-hline {
+  position: absolute;
+  left: 1028px;
+  top: 918px;
+  width: 892px;
+  height: 2px;
+  background: #000;
+}
+.pd-vline {
+  position: absolute;
+  left: 1569px;
+  top: 918px;
+  width: 2px;
+  height: 80px;
+  background: #000;
+}
+
+/* ── Controls (size & qty) ── */
+.pd-ctrl-btn {
+  position: absolute;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pd-ctrl-minus {
+  width: 15px;
+  height: 1.5px;
+  background: #000;
+}
+
+.pd-ctrl-plus {
+  position: relative;
+  width: 15px;
+  height: 15px;
+}
+.pd-ctrl-plus::before,
+.pd-ctrl-plus::after {
+  content: '';
+  position: absolute;
+  background: #000;
+}
+.pd-ctrl-plus::before {
+  width: 15px;
+  height: 1.5px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.pd-ctrl-plus::after {
+  width: 1.5px;
+  height: 15px;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+/* Size controls */
+.pd-size-minus { left: calc(1115px - 8px); top: calc(962px - 8px); }
+.pd-size-label {
+  position: absolute;
+  left: 1260px;
+  top: 936px;
+  font-family: var(--font-kr);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.6;
+  letter-spacing: 0.6px;
+  color: #000;
+  margin: 0;
+  transform: translateX(-50%);
+}
+.pd-size-plus { left: calc(1468px - 8px); top: calc(955px - 8px); }
+
+/* Quantity controls */
+.pd-qty-minus { left: calc(1643px - 8px); top: calc(962px - 8px); }
+.pd-qty-label {
+  position: absolute;
+  left: 1738px;
+  top: 936px;
+  font-family: var(--font-kr);
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.6;
+  letter-spacing: 0.6px;
+  color: #000;
+  margin: 0;
+  transform: translateX(-50%);
+}
+.pd-qty-plus { left: calc(1833px - 8px); top: calc(955px - 8px); }
+
+/* ── Add to Cart ── */
+.pd-add-to-cart {
+  position: absolute;
+  left: 1028px;
+  top: 999px;
+  width: 892px;
+  height: 80px;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.pd-add-to-cart span {
+  font-family: var(--font-kr);
+  font-weight: 600;
+  font-size: 25px;
+  letter-spacing: 0.5px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* ── Atmosphere description text ── */
+.pd-atm-desc {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 1242px;
+  font-family: var(--font-kr);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.6;
+  letter-spacing: 0.4px;
+  color: #000;
+  text-align: center;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* ── Forest atmosphere images ── */
+.pd-forest-img {
+  position: absolute;
+  top: 1398px;
+  width: 510px;
+  height: 599px;
+  overflow: hidden;
+  opacity: 0.8;
+}
+.pd-forest-img img {
+  position: absolute;
+  width: 100%;
+  max-width: none;
+  display: block;
+  left: 0;
+}
+.pd-forest-img-1 { left: 195px; }
+.pd-forest-img-1 img { height: 151.31%; top: -10.98%; }
+
+.pd-forest-img-2 { left: 705px; }
+.pd-forest-img-2 img { height: 113.02%; top: -0.05%; }
+
+.pd-forest-img-3 { left: 1215px; }
+.pd-forest-img-3 img { height: 151.31%; top: -25.57%; }
+
+/* Gradient separators between forest images */
+.pd-forest-grad {
+  position: absolute;
+  top: 1398px;
+  width: 200px;
+  height: 599px;
+  background: linear-gradient(to left, rgba(0,0,0,0.4), rgba(0,0,0,0));
+  pointer-events: none;
+  z-index: 2;
+}
+.pd-forest-grad-1 { left: 505px; }
+.pd-forest-grad-2 { left: 1015px; }
+.pd-forest-grad-3 { left: 1525px; }
+
+/* ── Forest image captions ── */
+.pd-img-title {
+  position: absolute;
+  top: 2008px;
+  font-family: var(--font-kr);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.6;
+  letter-spacing: 0.48px;
+  color: #000;
+  text-align: center;
+  margin: 0;
+  transform: translateX(-50%);
+}
+.pd-img-desc {
+  position: absolute;
+  top: 2046px;
+  font-family: var(--font-kr);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 0.28px;
+  color: #000;
+  text-align: center;
+  margin: 0;
+  transform: translateX(-50%);
+}
+.pd-img-title-1, .pd-img-desc-1 { left: 449px; }
+.pd-img-title-2, .pd-img-desc-2 { left: 960px; }
+.pd-img-title-3, .pd-img-desc-3 { left: 1471px; }
+
+/* ── The Atmosphere heading ── */
+.pd-atm-heading {
+  position: absolute;
+  left: 40px;
+  top: 2203px;
+  font-family: var(--font-kr);
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 1.6;
+  letter-spacing: 0.84px;
+  color: #000;
+  margin: 0;
+}
+
+/* ── Product images (diffuser, candle, incense) ── */
+.pd-product-img {
+  position: absolute;
+  top: 2289px;   /* container_height(3244) - bottom(156) - height(799) = 2289 */
+  width: 599px;
+  height: 799px;
+  overflow: hidden;
+}
+.pd-product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.pd-product-img-1 { left: 40px; }
+.pd-product-img-2 { left: 659px; }
+.pd-product-img-3 { left: 1280px; }
+
+/* ── Product names ── */
+.pd-prod-name {
+  position: absolute;
+  top: 3089px;
+  font-family: var(--font-kr);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.6;
+  letter-spacing: 0.48px;
+  color: #000;
+  margin: 0;
+}
+.pd-prod-name-1 { left: 40px; }
+.pd-prod-name-2 { left: 659px; }
+.pd-prod-name-3 { left: 1280px; }
+
+/* ── Product prices ── */
+.pd-prod-price {
+  position: absolute;
+  top: 3167px;
+  font-family: var(--font-kr);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.6;
+  letter-spacing: 0.48px;
+  color: #000;
+  margin: 0;
+}
+.pd-prod-price-1 { left: 40px; }
+.pd-prod-price-2 { left: 659px; }
+.pd-prod-price-3 { left: 1280px; }
+
+/* ==========================================================================
+   SHOP CITY PAGE  (shop_city.html) — reuses all sn- classes from shop_nature
+   Only needs body override + city-specific additions
+   ========================================================================== */
+
+.page-shopcity {
+  background: #ffffff;
+  overflow-y: auto !important;
+  height: auto !important;
+}
+
+/* Left-side gradient overlay for Warm Pavement image */
+.sn-img--gradient-left {
+  position: relative;
+}
+.sn-img--gradient-left::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.6) 10%, rgba(0,0,0,0) 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Category nav link style */
+.sn-cat--link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  display: block;
+}
+.sn-cat--link:hover {
+  opacity: 0.7;
+}
+
+/* ==========================================================================
+   SHOP MEMOIR PAGE  (shop_memoir.html)
+   ========================================================================== */
+.page-shopmemoir {
+  background: #ffffff;
+  overflow-y: auto !important;
+  height: auto !important;
+}
+
+/* GPS text on right side of image */
+.sn-gps--right {
+  left: calc(79.17% - 8px);
+}
+
+/* White GPS text (for dark images) */
+.sn-gps--white p { color: #ffffff; }

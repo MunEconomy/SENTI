@@ -35,12 +35,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  if (document.body.classList.contains('page-shopnature')) {
+  const isShopPage = document.body.classList.contains('page-shopnature') ||
+                     document.body.classList.contains('page-shopcity')  ||
+                     document.body.classList.contains('page-shopmemoir');
+
+  if (isShopPage) {
+    const SC_CONTAINER_HEIGHT = document.body.classList.contains('page-shopcity')
+      ? 2100   // City: 3 items
+      : document.body.classList.contains('page-shopmemoir')
+      ? 2700   // Memoir: 4 items
+      : SN_CONTAINER_HEIGHT; // Nature: 3300
+
     const s0 = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
 
     // Set outer height so the body scrolls the correct distance
     const outer = document.getElementById('sn-outer');
-    if (outer) outer.style.height = Math.round(SN_CONTAINER_HEIGHT * s0) + 'px';
+    if (outer) outer.style.height = Math.round(SC_CONTAINER_HEIGHT * s0) + 'px';
 
     // Set header-wrap visual height
     const headerWrap = document.getElementById('sn-header-wrap');
@@ -79,10 +89,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const containerWidth = window.innerWidth / scale;
     document.documentElement.style.setProperty('--container-width', `${containerWidth}px`);
 
-    // Update shop-nature layout on resize
-    if (getPageType() === 'shopnature') {
+    // Update shop layout on resize
+    if (['shopnature','shopcity','shopmemoir'].includes(getPageType())) {
+      const containerH = getPageType() === 'shopcity' ? 2100
+                       : getPageType() === 'shopmemoir' ? 2700
+                       : SN_CONTAINER_HEIGHT;
       const outer = document.getElementById('sn-outer');
-      if (outer) outer.style.height = Math.round(SN_CONTAINER_HEIGHT * scale) + 'px';
+      if (outer) outer.style.height = Math.round(containerH * scale) + 'px';
       const hw = document.getElementById('sn-header-wrap');
       if (hw) hw.style.height = Math.round(80 * scale) + 'px';
       snUpdateTransform(scale);
@@ -360,8 +373,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 800);
   }
 
-  // Intercept nav links for smooth fade transitions
-  const navLinks = document.querySelectorAll('.nav-link, .brand-logo');
+  // Intercept nav links + product image links + back buttons for smooth fade transitions
+  const navLinks = document.querySelectorAll('.nav-link, .brand-logo, .sn-img a, .pd-back-btn, .sn-cat--link');
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
@@ -396,12 +409,18 @@ document.addEventListener('DOMContentLoaded', () => {
       return 'sentiment';
     } else if (document.body.classList.contains('page-sentir')) {
       return 'sentir';
+    } else if (document.body.classList.contains('page-product-detail')) {
+      return 'product-detail';
     } else if (document.body.classList.contains('page-brand')) {
       return 'brand';
     } else if (document.body.classList.contains('page-product')) {
       return 'product';
     } else if (document.body.classList.contains('page-shopnature')) {
       return 'shopnature';
+    } else if (document.body.classList.contains('page-shopcity')) {
+      return 'shopcity';
+    } else if (document.body.classList.contains('page-shopmemoir')) {
+      return 'shopmemoir';
     } else {
       return 'landing';
     }
@@ -449,6 +468,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } else if (pageType === 'shopnature') {
       // Navigate back to product when at the very top and scrolling up
+      if (e.deltaY < -40 && window.scrollY === 0) {
+        triggerPageTransition('product.html');
+      }
+    } else if (pageType === 'shopcity') {
+      if (e.deltaY < -40 && window.scrollY === 0) {
+        triggerPageTransition('product.html');
+      }
+    } else if (pageType === 'shopmemoir') {
       if (e.deltaY < -40 && window.scrollY === 0) {
         triggerPageTransition('product.html');
       }
@@ -549,6 +576,16 @@ document.addEventListener('DOMContentLoaded', () => {
         triggerPageTransition('shop_nature.html');
       }
     } else if (pageType === 'shopnature') {
+      if (scrollKeysUp.includes(e.key) && window.scrollY === 0) {
+        e.preventDefault();
+        triggerPageTransition('product.html');
+      }
+    } else if (pageType === 'shopcity') {
+      if (scrollKeysUp.includes(e.key) && window.scrollY === 0) {
+        e.preventDefault();
+        triggerPageTransition('product.html');
+      }
+    } else if (pageType === 'shopmemoir') {
       if (scrollKeysUp.includes(e.key) && window.scrollY === 0) {
         e.preventDefault();
         triggerPageTransition('product.html');
@@ -693,7 +730,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { passive: true });
 
-  // 3. Scent List & Floating Preview Card Interactions (Only on collection-intro page)
+  // 3. Collection Intro — typography reveal (top to bottom)
+  if (getPageType() === 'collection-intro') {
+    const ciRevealEls = document.querySelectorAll('.ci-reveal');
+    const ciObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const delay = parseInt(entry.target.dataset.ciDelay || '0');
+          setTimeout(() => {
+            entry.target.classList.add('ci-revealed');
+          }, delay);
+          ciObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0 });
+    ciRevealEls.forEach(el => ciObserver.observe(el));
+  }
+
+  // 4. Scent List & Floating Preview Card Interactions (Only on collection-intro page)
   if (getPageType() === 'collection-intro') {
     const scentItems = document.querySelectorAll('.scent-item');
     const previewCard = document.getElementById('scent-preview-card');
@@ -817,6 +871,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize with Dawn Forest
     updatePreviewCard('dawn-forest');
+
+    // Showcase section — left-to-right reveal on scroll
+    const showcaseViewport = document.querySelector('.collection-showcase-viewport');
+    const revealTargets = [
+      document.querySelector('.showcase-col-1'),
+      document.querySelector('.showcase-divider-1'),
+      document.querySelector('.showcase-col-2'),
+      document.querySelector('.showcase-divider-2'),
+      document.querySelector('.showcase-col-3'),
+    ];
+    const revealDelays = [2000, 2150, 2250, 2400, 2500];
+    let showcaseRevealed = false;
+
+    function triggerShowcaseReveal() {
+      if (showcaseRevealed) return;
+      const rect = showcaseViewport.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        showcaseRevealed = true;
+        revealTargets.forEach((el, i) => {
+          if (!el) return;
+          setTimeout(() => {
+            el.classList.add('showcase-revealed');
+          }, revealDelays[i]);
+        });
+      }
+    }
+
+    window.addEventListener('scroll', triggerShowcaseReveal, { passive: true });
+    triggerShowcaseReveal(); // check on load in case already visible
   }
 });
 

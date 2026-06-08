@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SENTI — Dawn Forest</title>
+  <meta name="description" content="SENTI Dawn Forest. A quiet fragrance inspired by the forest before morning fully arrives.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&family=Noto+Serif+KR:wght@200..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-product-detail page-transitioning">
+
+  <!-- Fixed Navigation -->
+  <div class="pd-header-wrap" id="pd-header-wrap">
+    <div class="pd-header-scaler">
+      <header class="site-header">
+        <a href="index.html" class="brand-logo" id="logo-senti">SENTI</a>
+        <nav class="nav-menu" aria-label="Main Navigation">
+          <a href="about.html"            class="nav-link"        id="nav-about">About</a>
+          <a href="collection_intro.html" class="nav-link"        id="nav-collection">Collection</a>
+          <a href="product.html"          class="nav-link active" id="nav-product">Product</a>
+        </nav>
+      </header>
+    </div>
+  </div>
+
+  <!-- Scrollable product content (1920 × 3244 design space) -->
+  <div class="pd-viewport">
+    <div class="pd-container">
+
+      <!-- ── Back arrow ── -->
+      <a href="product.html" class="pd-back-btn" aria-label="Back to product list">
+        <svg width="15" height="30" viewBox="0 0 15 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13 2L2 15L13 28" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+      <!-- ── Large main product image ── -->
+      <div class="pd-main-img-wrap">
+        <img src="assets/pd_main.jpg" alt="Dawn Forest Eau de Parfum">
+      </div>
+
+      <!-- ── Product title & brand info ── -->
+      <p class="pd-product-title">
+        DAWN FOREST<br>
+        UNISEX [ EAU DE PARFUM ]
+      </p>
+      <p class="pd-product-meta">
+        2026 / EDT.<br>
+        SENTI
+      </p>
+
+      <!-- ── Price ── -->
+      <p class="pd-price">$183.50</p>
+
+      <!-- ── Description ── -->
+      <div class="pd-description">
+        <p>A quiet fragrance inspired by the forest before morning fully</p>
+        <p>arrives. Damp wood, pale fog, and cold air blend into a soft</p>
+        <p>green stillness, recalling the untouched moment between</p>
+        <p>night and dawn.</p>
+      </div>
+
+      <!-- ── Location ── -->
+      <p class="pd-label-location">LOCATION</p>
+      <p class="pd-location-name">
+        A Forest Before Dawn<br>
+        Captured in Scent
+      </p>
+      <div class="pd-location-info">
+        <p>Seoul, Seongsu</p>
+        <p>37° 32' 16" N / 127° 03' 09" E</p>
+      </div>
+      <p class="pd-location-atm">
+        The forest opens slowly before the morning light.<br>
+        Fog rests between damp wood and quiet moss,<br>
+        leaving a clean, green stillness on the skin.
+      </p>
+
+      <!-- ── Scent keywords ── -->
+      <p class="pd-note pd-note-fog">FOG</p>
+      <p class="pd-note pd-note-cedar">CEDARWOOD</p>
+      <p class="pd-note pd-note-white">WHITE</p>
+      <p class="pd-note pd-note-musk">MUSK</p>
+      <p class="pd-note pd-note-wood">WET WOOD</p>
+      <p class="pd-note pd-note-air">COLD AIR</p>
+
+      <!-- ── Divider lines ── -->
+      <div class="pd-hline"></div>
+      <div class="pd-vline"></div>
+
+      <!-- ── Size selector ── -->
+      <button class="pd-size-minus pd-ctrl-btn" aria-label="Decrease size">
+        <div class="pd-ctrl-minus"></div>
+      </button>
+      <p class="pd-size-label">50ml</p>
+      <button class="pd-size-plus pd-ctrl-btn" aria-label="Increase size">
+        <div class="pd-ctrl-plus"></div>
+      </button>
+
+      <!-- ── Quantity selector ── -->
+      <button class="pd-qty-minus pd-ctrl-btn" aria-label="Decrease quantity">
+        <div class="pd-ctrl-minus"></div>
+      </button>
+      <p class="pd-qty-label">1</p>
+      <button class="pd-qty-plus pd-ctrl-btn" aria-label="Increase quantity">
+        <div class="pd-ctrl-plus"></div>
+      </button>
+
+      <!-- ── Add to Cart ── -->
+      <div class="pd-add-to-cart">
+        <span>ADD TO CART</span>
+      </div>
+
+      <!-- ── Atmosphere description text ── -->
+      <p class="pd-atm-desc">
+        Before morning arrives, the forest is filled with an unnamed veil of mist.<br>
+        The scent of damp wood, cold air, and moss beneath your steps begins to slowly awaken.<br>
+        Dawn Forest captures that quiet first moment and holds it in scent.
+      </p>
+
+      <!-- ── 3 Forest atmosphere images ── -->
+      <div class="pd-forest-img pd-forest-img-1">
+        <img src="assets/pd_forest1.jpg" alt="Morning Bloom — forest before dawn">
+      </div>
+      <div class="pd-forest-img pd-forest-img-2">
+        <img src="assets/pd_forest2.jpg" alt="Hidden Light — sunlit moss">
+      </div>
+      <div class="pd-forest-img pd-forest-img-3">
+        <img src="assets/pd_forest3.jpg" alt="Vertical Silence — tall trees">
+      </div>
+
+      <!-- Separator gradients between forest images -->
+      <div class="pd-forest-grad pd-forest-grad-1"></div>
+      <div class="pd-forest-grad pd-forest-grad-2"></div>
+      <div class="pd-forest-grad pd-forest-grad-3"></div>
+
+      <!-- ── Forest image captions ── -->
+      <p class="pd-img-title pd-img-title-1">Morning Bloom</p>
+      <p class="pd-img-desc pd-img-desc-1">Soft flowers open beneath<br>the first mist of dawn.</p>
+
+      <p class="pd-img-title pd-img-title-2">Hidden Light</p>
+      <p class="pd-img-desc pd-img-desc-2">Sunlight falls gently over<br>moss and quiet ground.</p>
+
+      <p class="pd-img-title pd-img-title-3">Vertical Silence</p>
+      <p class="pd-img-desc pd-img-desc-3">Tall trees rise quietly into<br>the pale morning air.</p>
+
+      <!-- ── The Atmosphere heading ── -->
+      <p class="pd-atm-heading">The Atmosphere</p>
+
+      <!-- ── 3 Product images ── -->
+      <div class="pd-product-img pd-product-img-1">
+        <img src="assets/pd_product1.jpg" alt="Dawn Forest Diffuser">
+      </div>
+      <div class="pd-product-img pd-product-img-2">
+        <img src="assets/pd_product2.jpg" alt="Dawn Forest Fragrant Candle">
+      </div>
+      <div class="pd-product-img pd-product-img-3">
+        <img src="assets/pd_product3.jpg" alt="Dawn Forest Insense">
+      </div>
+
+      <!-- ── Product names & prices ── -->
+      <p class="pd-prod-name pd-prod-name-1">Dawn Forest Diffuser</p>
+      <p class="pd-prod-name pd-prod-name-2">Dawn Forest Fragrant Candle</p>
+      <p class="pd-prod-name pd-prod-name-3">Dawn Forest Insense</p>
+
+      <p class="pd-prod-price pd-prod-price-1">$91.00</p>
+      <p class="pd-prod-price pd-prod-price-2">$74.60</p>
+      <p class="pd-prod-price pd-prod-price-3">$62.30</p>
+
+    </div><!-- /pd-container -->
+  </div><!-- /pd-viewport -->
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SENTI — City Collection</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&family=Noto+Serif+KR:wght@200..900&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-shopcity page-transitioning">
+
+  <div class="sn-outer" id="sn-outer">
+    <div class="sn-sticky">
+
+      <!-- ── Navigation header ── -->
+      <div class="sn-header-wrap" id="sn-header-wrap">
+        <div class="sn-header-inner">
+          <header class="site-header">
+            <a href="index.html" class="brand-logo" id="logo-senti">SENTI</a>
+            <nav class="nav-menu" aria-label="Main Navigation">
+              <a href="about.html"            class="nav-link"        id="nav-about">About</a>
+              <a href="collection_intro.html" class="nav-link"        id="nav-collection">Collection</a>
+              <a href="product.html"          class="nav-link active" id="nav-product">Product</a>
+            </nav>
+          </header>
+        </div>
+      </div>
+
+      <!-- ── Scaled design canvas ── -->
+      <div class="sn-container" id="sn-container">
+
+        <!-- Category nav group -->
+        <nav class="sn-cats-group" id="sn-cats">
+          <a href="shop_nature.html" class="sn-cat sn-cat--dim sn-cat--link">Nature</a>
+          <p class="sn-cat sn-cat--active">City</p>
+          <a href="shop_memoir.html" class="sn-cat sn-cat--dim sn-cat--link">Memoir</a>
+          <p class="sn-cat sn-cat--dim">Archive</p>
+          <p class="sn-cat sn-cat--dim">Discovery</p>
+          <p class="sn-cat sn-cat--dim">Body Ritual</p>
+          <p class="sn-cat sn-cat--dim">Home Ritual</p>
+          <p class="sn-cat sn-cat--dim">Gift Edition</p>
+        </nav>
+
+        <div class="sn-products-wrap">
+
+          <!-- ═══════════════════
+               SECTION 1 — 3AM
+               ═══════════════════ -->
+          <div class="sn-img sn-img--wide" style="top:63px">
+            <img src="assets/city_3am.jpg" alt="3AM" style="height:102.43%; top:-0.01%">
+          </div>
+          <div class="sn-gps" style="top:83px">
+            <p>37° 32' 58" N / 127° 02' 14" E</p>
+            <p>C-3AM / 1.7 AM.NT.LIQ</p>
+          </div>
+          <p class="sn-name"  style="top:563px; left:calc(41.67% + 15px)">3AM</p>
+          <p class="sn-desc"  style="top:601px; left:calc(41.67% + 15px)">Cold air after midnight.</p>
+          <p class="sn-notes" style="top:582px; left:calc(79.17% - 7px)">Concrete / Night air /<br>Soft musk</p>
+          <p class="sn-price" style="top:604px; left:calc(87.5% - 12px)">$215.00</p>
+
+          <!-- ══════════════════════════
+               SECTION 2 — Rainy Alley
+               ══════════════════════════ -->
+          <div class="sn-img sn-img--wide" style="top:690px">
+            <img src="assets/city_rainy_alley.jpg" alt="Rainy Alley"
+                 style="height:102.6%; left:-0.08%; top:-1.4%; width:100.17%">
+          </div>
+          <div class="sn-gps" style="top:710px">
+            <p>35° 20' 14" N / 127° 43' 38" E</p>
+            <p>N-MM / 1.7 MS.DW.LIQ</p>
+          </div>
+          <p class="sn-name"  style="top:1190px; left:calc(41.67% + 15px)">Rainy Alley</p>
+          <p class="sn-desc"  style="top:1228px; left:calc(41.67% + 15px)">Rain left on the asphalt.</p>
+          <p class="sn-notes" style="top:1211px; left:calc(79.17% - 7px)">Wet asphalt / Rain accord /<br>Dark wood</p>
+          <p class="sn-price" style="top:1233px; left:calc(87.5% - 12px)">$281.40</p>
+
+          <!-- ═══════════════════════════
+               SECTION 3 — Warm Pavement
+               ═══════════════════════════ -->
+          <div class="sn-img sn-img--wide sn-img--gradient-left" style="top:1321px">
+            <img src="assets/city_warm_pavement.jpg" alt="Warm Pavement"
+                 style="height:102.43%; top:-1.21%">
+          </div>
+          <div class="sn-gps" style="top:1341px">
+            <p>37° 31' 47" N / 127° 01' 05" E</p>
+            <p>50ml C-WP / 1.7 WM.PV.LIQ</p>
+          </div>
+          <p class="sn-name"  style="top:1821px; left:calc(41.67% + 15px)">Warm Pavement</p>
+          <p class="sn-desc"  style="top:1859px; left:calc(41.67% + 15px)">Heat held by the street.</p>
+          <p class="sn-notes" style="top:1842px; left:calc(58.33% + 5px)">Warm stone / Dry air /<br>Solar musk</p>
+          <p class="sn-price" style="top:1864px; left:calc(87.5% - 12px)">$203.70</p>
+
+        </div><!-- /sn-products-wrap -->
+
+      </div><!-- /sn-container -->
+    </div><!-- /sn-sticky -->
+  </div><!-- /sn-outer -->
+
+  <script src="script.js"></script>
+</body>
+</html>
