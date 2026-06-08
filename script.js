@@ -421,6 +421,8 @@ document.addEventListener('DOMContentLoaded', () => {
       return 'shopcity';
     } else if (document.body.classList.contains('page-shopmemoir')) {
       return 'shopmemoir';
+    } else if (document.body.classList.contains('page-footer')) {
+      return 'footer';
     } else {
       return 'landing';
     }
@@ -504,8 +506,14 @@ document.addEventListener('DOMContentLoaded', () => {
         triggerPageTransition('scent.html');
       }
     } else if (pageType === 'sentir') {
-      if (e.deltaY < -40) {
+      if (e.deltaY > 40) {
+        triggerPageTransition('footer.html');
+      } else if (e.deltaY < -40) {
         triggerPageTransition('sentiment.html');
+      }
+    } else if (pageType === 'footer') {
+      if (e.deltaY < -40) {
+        triggerPageTransition('sentir.html');
       }
     } else if (pageType === 'shop') {
       if (e.deltaY > 40) {
@@ -623,9 +631,17 @@ document.addEventListener('DOMContentLoaded', () => {
         triggerPageTransition('scent.html');
       }
     } else if (pageType === 'sentir') {
-      if (scrollKeysUp.includes(e.key)) {
+      if (scrollKeysDown.includes(e.key)) {
+        e.preventDefault();
+        triggerPageTransition('footer.html');
+      } else if (scrollKeysUp.includes(e.key)) {
         e.preventDefault();
         triggerPageTransition('sentiment.html');
+      }
+    } else if (pageType === 'footer') {
+      if (scrollKeysUp.includes(e.key)) {
+        e.preventDefault();
+        triggerPageTransition('sentir.html');
       }
     } else if (pageType === 'shop') {
       if (scrollKeysDown.includes(e.key)) {
@@ -712,8 +728,14 @@ document.addEventListener('DOMContentLoaded', () => {
         triggerPageTransition('scent.html');
       }
     } else if (pageType === 'sentir') {
-      if (diffY < -80) {
+      if (diffY > 80) {
+        triggerPageTransition('footer.html');
+      } else if (diffY < -80) {
         triggerPageTransition('sentiment.html');
+      }
+    } else if (pageType === 'footer') {
+      if (diffY < -80) {
+        triggerPageTransition('sentir.html');
       }
     } else if (pageType === 'shop') {
       if (diffY > 80) {

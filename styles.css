@@ -4472,3 +4472,229 @@ body.page-product-detail {
 
 /* White GPS text (for dark images) */
 .sn-gps--white p { color: #ffffff; }
+
+/* ==========================================================================
+   FOOTER  (ft- prefix, 1920 × 800 design space)
+   Reused across collection_intro, product_dawn_forest, shop_* pages
+   ========================================================================== */
+
+.ft-viewport {
+  position: relative;
+  width: 100vw;
+  height: calc(800px * var(--scale-factor));
+  background: #ffffff;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ft-container {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0) scale(var(--scale-factor));
+  transform-origin: top center;
+  width: 1920px;
+  height: 800px;
+  background: #ffffff;
+}
+
+.ft-logo {
+  position: absolute;
+  left: calc(50% - 92px);
+  top: 327px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 48px;
+  letter-spacing: 9.6px;
+  line-height: 1.6;
+  color: #000;
+  font-variation-settings: "CTGR" 100, "wdth" 100;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.ft-tagline {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 404px;
+  font-family: var(--font-kr);
+  font-weight: 400;
+  font-size: 24px;
+  letter-spacing: 0.48px;
+  line-height: 1.6;
+  color: #000;
+  text-align: center;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.ft-collections {
+  position: absolute;
+  left: calc(50% - 136px);
+  top: 520px;
+  font-family: var(--font-kr);
+  font-weight: 400;
+  font-size: 24px;
+  letter-spacing: 0.48px;
+  line-height: 1.6;
+  color: #000;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.ft-location {
+  position: absolute;
+  left: calc(45.83% + 2px);
+  top: 558px;
+  font-family: var(--font-kr);
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 0.48px;
+  line-height: 1.6;
+  color: #000;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.ft-copyright {
+  position: absolute;
+  left: calc(50% - 382px);
+  top: 716px;
+  font-family: var(--font-kr);
+  font-weight: 400;
+  font-size: 24px;
+  letter-spacing: 0.48px;
+  line-height: 1.6;
+  color: #000;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* ── Footer Page (footer.html) ─────────────────────────────────────────── */
+body.page-footer {
+  background: #ffffff;
+  --text-color: #000000;
+}
+
+.fp-viewport {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.fp-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(var(--scale-factor));
+  transform-origin: center center;
+  width: 1920px;
+  height: 1080px;
+  background: #ffffff;
+}
+
+/* SENTI logotype */
+.fp-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 345px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 48px;
+  letter-spacing: 9.6px;
+  font-variation-settings: "CTGR" 100, "wdth" 100;
+  color: #000;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Tagline */
+.fp-tagline {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 422px;
+  font-family: var(--font-kr);
+  font-weight: 400;
+  font-size: 24px;
+  letter-spacing: 0.48px;
+  line-height: 1.6;
+  color: #000;
+  text-align: center;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Collections */
+.fp-collections {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 538px;
+  font-family: var(--font-kr);
+  font-weight: 400;
+  font-size: 24px;
+  letter-spacing: 0.48px;
+  color: #000;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Location */
+.fp-location {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 576px;
+  font-family: var(--font-kr);
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 0.48px;
+  color: #000;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Divider */
+.fp-divider {
+  position: absolute;
+  left: calc(50% - 400px);
+  top: 700px;
+  width: 800px;
+  height: 1px;
+  background: #000;
+  opacity: 0.15;
+}
+
+/* Copyright */
+.fp-copyright {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 730px;
+  font-family: var(--font-kr);
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: 0.4px;
+  color: #000;
+  opacity: 0.5;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Entrance animation for footer page */
+.page-footer .fp-viewport {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.reveal-active.page-footer .fp-viewport {
+  opacity: 1;
+  transform: translateY(0);
+}
