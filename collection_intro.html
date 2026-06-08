@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SENTI — Collection Intro</title>
+  <meta name="description" content="SENTI Premium Niche Perfume. Scent, Sentiment, Sentir. Every scent becomes memory.">
+  
+  <!-- Preconnect Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Load Noto Serif, Noto Serif Display, and Noto Serif KR -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&family=Noto+Serif+KR:wght@200..900&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-collection-intro page-transitioning">
+
+  <!-- Ambient blurred background — fills viewport margins outside the scaled container -->
+  <div class="ci-ambient-bg" aria-hidden="true">
+    <img src="assets/collection_bg.png" alt="">
+  </div>
+
+  <!-- Fixed Navigation Bar (follows scroll, hides on scroll down) -->
+  <div class="ci-header-wrap" id="ci-header-wrap">
+    <div class="ci-header-inner">
+      <header class="site-header">
+        <a href="index.html" class="brand-logo" id="logo-senti">SENTI</a>
+        <nav class="nav-menu" aria-label="Main Navigation">
+          <a href="about.html" class="nav-link" id="nav-about">About</a>
+          <a href="collection_intro.html" class="nav-link active" id="nav-collection">Collection</a>
+          <a href="product.html" class="nav-link" id="nav-product">Product</a>
+        </nav>
+      </header>
+    </div>
+  </div>
+
+  <!-- Collection Intro View Section -->
+  <main class="collection-intro-viewport">
+    <div class="collection-intro-container">
+
+      <!-- Clean Background Image -->
+      <div class="collection-bg-wrapper">
+        <img src="assets/collection_bg.png" alt="" class="collection-bg-img">
+      </div>
+
+      <!-- Typography Text Overlays (Positioned absolutely according to Figma coordinates) -->
+      <p class="collection-title-word col-word-every">/EVERY</p>
+      <p class="collection-title-word col-word-scent">SCENT</p>
+      <p class="collection-title-word col-word-becomes">BECOMES</p>
+      <p class="collection-title-word col-word-memory">MEMORY</p>
+
+      <!-- Foreground Woman Cutout (For 3D layering effect) -->
+      <div class="collection-fg-wrapper" aria-hidden="true">
+        <img src="assets/collection_fg.png" alt="" class="collection-fg-img">
+      </div>
+
+      <!-- Side Information Blocks -->
+      <div class="col-info-block col-info-new-memory">
+        <p>New</p>
+        <p>Memoery</p>
+      </div>
+
+      <div class="col-info-block col-info-signature-perfume">
+        <p>Signature</p>
+        <p>Perfume</p>
+      </div>
+
+      <div class="col-info-block col-info-emotion-atmosphere">
+        <p>Emotion</p>
+        <p>Atmosphere</p>
+        <p>2026</p>
+      </div>
+
+      <!-- Bottom Description Block -->
+      <div class="col-info-block col-info-description">
+        <p>A scent is never just a scent.</p>
+        <p>It is a place, a feeling,</p>
+        <p>and a memory that stays.</p>
+      </div>
+
+      <!-- Bottom Right Details Panel -->
+      <div class="col-details-panel">
+        <div class="col-details-senti">
+          <p>SENTI</p>
+          <p>COLLECTION</p>
+        </div>
+        <div class="col-details-spring">
+          <p>SPRING</p>
+          <p>FRAGRANCE</p>
+        </div>
+        <p class="col-details-year">2026</p>
+        <p class="col-details-tagline">THE SCENT THAT STAYS</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Collection List Section (1920x1425, Scrollable) -->
+  <section class="collection-list-viewport">
+    <div class="collection-list-container">
+      
+      <!-- Scent list items on the left -->
+      <div class="scent-list-container">
+        
+        <div class="scent-item active" data-id="dawn-forest">
+          <span class="scent-category">(NATURE)</span>
+          <span class="scent-name">Dawn Forest</span>
+        </div>
+
+        <div class="scent-item" data-id="falling-petals">
+          <span class="scent-category">(NATURE)</span>
+          <span class="scent-name">Falling Petals</span>
+        </div>
+
+        <div class="scent-item" data-id="first-snow">
+          <span class="scent-category">(NATURE)</span>
+          <span class="scent-name">First Snow</span>
+        </div>
+
+        <div class="scent-item" data-id="3am">
+          <span class="scent-category">(CITY)</span>
+          <span class="scent-name">3AM</span>
+        </div>
+
+        <div class="scent-item" data-id="rainy-alley">
+          <span class="scent-category">(CITY)</span>
+          <span class="scent-name">Rainy Alley</span>
+        </div>
+
+        <div class="scent-item" data-id="the-first-day">
+          <span class="scent-category">(MEMOIR)</span>
+          <span class="scent-name">The First Day</span>
+        </div>
+
+        <div class="scent-item" data-id="old-room">
+          <span class="scent-category">(MEMOIR)</span>
+          <span class="scent-name">Old Room</span>
+        </div>
+
+        <div class="scent-item" data-id="silent-morning">
+          <span class="scent-category">(SILENCE)</span>
+          <span class="scent-name">Silent Morning</span>
+        </div>
+
+        <div class="scent-item" data-id="last-scent">
+          <span class="scent-category">(LINGER)</span>
+          <span class="scent-name">Last Scent</span>
+        </div>
+
+      </div>
+
+      <!-- Scent Preview Card on the right -->
+      <div class="scent-preview-card" id="scent-preview-card">
+        <p class="card-coordinate" id="card-coordinate">N.38.03 · E.128.10</p>
+        <div class="card-image-wrapper">
+          <img src="assets/perfume_dawn_forest.png" alt="Perfume Preview" id="card-image">
+        </div>
+        <p class="card-code" id="card-code">SNTI · N.FOREST.01</p>
+        <p class="card-desc" id="card-desc">The silence of the forest before the world awakes.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Collection Showcase Section (Figma node 51-322) -->
+  <section class="collection-showcase-viewport">
+    <div class="collection-showcase-container">
+
+      <!-- Vertical side text (rotated -90deg) -->
+      <div class="showcase-side-text-wrapper">
+        <p class="showcase-side-text">
+          SENTI is a scent that holds<br>
+          the moments you thought had<br>
+          already slipped away.
+        </p>
+      </div>
+
+      <!-- Column 1: Dawn Forest -->
+      <div class="showcase-col showcase-col-1">
+        <p class="showcase-num">01</p>
+        <div class="showcase-img-wrapper showcase-img-1">
+          <img src="assets/shop_img31.png" alt="Dawn Forest">
+        </div>
+        <p class="showcase-name">Dawn Forest</p>
+        <p class="showcase-desc">The silence of the forest before<br>the world awakes, a scent that carries<br>you to that untouched moment.</p>
+      </div>
+
+      <!-- Divider 1 -->
+      <div class="showcase-divider showcase-divider-1"></div>
+
+      <!-- Column 2: The First Day -->
+      <div class="showcase-col showcase-col-2">
+        <p class="showcase-num">02</p>
+        <div class="showcase-img-wrapper showcase-img-2">
+          <img src="assets/shop_memoir1.png" alt="The First Day">
+        </div>
+        <p class="showcase-name">The First Day</p>
+        <p class="showcase-desc">The warmth of a familiar scent,<br>lingering long after they were gone.<br>A memory you never truly forgot.</p>
+      </div>
+
+      <!-- Divider 2 -->
+      <div class="showcase-divider showcase-divider-2"></div>
+
+      <!-- Column 3: 3AM -->
+      <div class="showcase-col showcase-col-3">
+        <p class="showcase-num">03</p>
+        <div class="showcase-img-wrapper showcase-img-3">
+          <img src="assets/shop_img30.png" alt="3AM">
+        </div>
+        <p class="showcase-name">3AM</p>
+        <p class="showcase-desc">The noise of the city fades at dawn<br>leaving only the cold air and rain,<br>inviting you back to that still moment.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Logic -->
+  <script src="script.js"></script>
+</body>
+</html>

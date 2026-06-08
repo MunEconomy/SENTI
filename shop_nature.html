@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SENTI — Nature Collection</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&family=Noto+Serif+KR:wght@200..900&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-shopnature page-transitioning">
+
+  <div class="sn-outer" id="sn-outer">
+    <div class="sn-sticky">
+
+      <!-- ── Navigation header — lives OUTSIDE the scaled container so
+           show/hide CSS transition works cleanly.
+           Inner 1920px div is scaled by the same scale-factor. ── -->
+      <div class="sn-header-wrap" id="sn-header-wrap">
+        <div class="sn-header-inner">
+          <header class="site-header">
+            <a href="index.html" class="brand-logo" id="logo-senti">SENTI</a>
+            <nav class="nav-menu" aria-label="Main Navigation">
+              <a href="about.html"            class="nav-link"        id="nav-about">About</a>
+              <a href="collection_intro.html" class="nav-link"        id="nav-collection">Collection</a>
+              <a href="product.html"          class="nav-link active" id="nav-product">Product</a>
+            </nav>
+          </header>
+        </div>
+      </div>
+
+      <!-- ── Scaled design canvas ── -->
+      <div class="sn-container" id="sn-container">
+
+        <!-- Category nav group — JS applies counter-translateY so it
+             stays fixed in the vertical center of the viewport while scrolling -->
+        <nav class="sn-cats-group" id="sn-cats">
+          <p class="sn-cat sn-cat--active">Nature</p>
+          <p class="sn-cat sn-cat--dim">City</p>
+          <p class="sn-cat sn-cat--dim">Memoir</p>
+          <p class="sn-cat sn-cat--dim">Archive</p>
+          <p class="sn-cat sn-cat--dim">Discovery</p>
+          <p class="sn-cat sn-cat--dim">Body Ritual</p>
+          <p class="sn-cat sn-cat--dim">Home Ritual</p>
+          <p class="sn-cat sn-cat--dim">Gift Edition</p>
+        </nav>
+
+        <!-- ══ Product sections wrapper — top offset clears the nav bar ══ -->
+        <div class="sn-products-wrap">
+
+        <!-- ═══════════════════════════════
+             SECTION 1 — Dawn Forest (wide)
+             ═══════════════════════════════ -->
+        <div class="sn-img sn-img--wide" style="top:63px">
+          <img src="assets/shop_dawn_forest.jpg" alt="Dawn Forest">
+        </div>
+        <div class="sn-gps" style="top:83px">
+          <p>37° 42' 16" N / 128° 35' 09" E</p>
+          <p>N-DF / 1.7 DW.FG.LIQ</p>
+        </div>
+        <p class="sn-name"  style="top:563px; left:calc(41.67% + 15px)">Dawn Forest</p>
+        <p class="sn-desc"  style="top:592px; left:calc(41.67% + 15px)">Mist over quiet woods.</p>
+        <p class="sn-notes" style="top:570px; left:calc(79.17% - 3px)">Fog / Cedarwood /<br>White musk</p>
+        <p class="sn-price" style="top:592px; left:calc(87.5% - 12px)">$183.50</p>
+
+        <!-- ═══════════════════════════════════════════════
+             SECTION 2 — Falling Petals + First Snow (half)
+             ═══════════════════════════════════════════════ -->
+        <div class="sn-img sn-img--half" style="top:692px; left:calc(41.67% + 15px)">
+          <img src="assets/shop_falling_petals.jpg" alt="Falling Petals">
+        </div>
+        <div class="sn-img sn-img--half" style="top:692px; left:66.67%">
+          <img src="assets/shop_first_snow.jpg" alt="First Snow">
+        </div>
+        <p class="sn-name"     style="top:1192px; left:calc(41.67% + 15px)">Falling Petals</p>
+        <p class="sn-desc"     style="top:1221px; left:calc(41.67% + 15px)">Soft petals left in air.</p>
+        <p class="sn-price-lg" style="top:1221px; left:calc(62.5% - 6px)">$170.30</p>
+        <p class="sn-name"     style="top:1192px; left:66.67%">First Snow</p>
+        <p class="sn-desc"     style="top:1221px; left:66.67%">A clean trace of winter.</p>
+        <p class="sn-price-lg" style="top:1221px; left:calc(87.5% - 22px)">$173.30</p>
+
+        <!-- ══════════════════════════════════
+             SECTION 3 — Rain Archive (wide)
+             ══════════════════════════════════ -->
+        <div class="sn-img sn-img--wide" style="top:1321px">
+          <img src="assets/shop_rain_archive.jpg" alt="Rain Archive">
+        </div>
+        <div class="sn-gps" style="top:1341px">
+          <p>33° 27' 05" N / 126° 34' 18" E</p>
+          <p>N-RA / 1.7 RN.AR.LIQ</p>
+        </div>
+        <p class="sn-name"  style="top:1821px; left:calc(41.67% + 15px)">Rain Archive</p>
+        <p class="sn-desc"  style="top:1859px; left:calc(41.67% + 15px)">After rain, memory remains.</p>
+        <p class="sn-notes" style="top:1842px; left:calc(79.17% - 7px)">Wet soil / Green leaf /<br>Clear musk</p>
+        <p class="sn-price" style="top:1864px; left:calc(87.5% - 12px)">$168.20</p>
+
+        <!-- ═══════════════════════════════════
+             SECTION 4 — Morning Moss (wide)
+             ═══════════════════════════════════ -->
+        <div class="sn-img sn-img--wide" style="top:1950px">
+          <img src="assets/shop_morning_moss.jpg" alt="Morning Moss">
+        </div>
+        <div class="sn-gps sn-gps--bottom" style="top:2386px">
+          <p>35° 20' 14" N / 127° 43' 38" E</p>
+          <p>N-MM / 1.7 MS.DW.LIQ</p>
+        </div>
+        <p class="sn-name"  style="top:2450px; left:calc(41.67% + 15px)">Morning Moss</p>
+        <p class="sn-desc"  style="top:2479px; left:calc(41.67% + 15px)">Cold dew before sunrise.</p>
+        <p class="sn-notes" style="top:2462px; left:calc(79.17% - 7px)">Moss / Dew /<br>Soft amber</p>
+        <p class="sn-price" style="top:2484px; left:calc(87.5% - 12px)">$172.80</p>
+
+        <!-- ══════════════════════════════════
+             SECTION 5 — Silent Grove (wide)
+             ══════════════════════════════════ -->
+        <div class="sn-img sn-img--wide" style="top:2579px">
+          <img src="assets/shop_silent_grove.jpg" alt="Silent Grove">
+        </div>
+        <div class="sn-gps sn-gps--bottom" style="top:3015px">
+          <p>37° 47' 31" N / 128° 32' 44" E</p>
+          <p>N-SG / 1.7 GV.WD.LIQ</p>
+        </div>
+        <p class="sn-name"  style="top:3079px; left:calc(41.67% + 15px)">Silent Grove</p>
+        <p class="sn-desc"  style="top:3108px; left:calc(41.67% + 15px)">Stillness under deep trees.</p>
+        <p class="sn-notes" style="top:3091px; left:calc(79.17% - 7px)">Hinoki / Dry wood /<br>Calm musk</p>
+        <p class="sn-price" style="top:3113px; left:calc(87.5% - 12px)">$123.60</p>
+
+        </div><!-- /sn-products-wrap -->
+
+      </div><!-- /sn-container -->
+    </div><!-- /sn-sticky -->
+  </div><!-- /sn-outer -->
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,3865 @@
+/* ==========================================================================
+   SENTI Premium Brand CSS - Design System & Layout (Static Editorial)
+   ========================================================================== */
+
+/* 1. Core Reset & Variable Declarations */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --font-display: 'Noto Serif Display', 'Noto Serif KR', serif;
+  --font-kr: 'Noto Serif KR', serif;
+  --scale-factor: 1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-kr);
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. Site Header (Navigation - Scaled Inside Container) */
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  background-color: transparent;
+  z-index: 100;
+}
+
+.brand-logo {
+  font-family: 'Noto Serif Display', serif;
+  font-weight: 600;
+  font-size: 40px;
+  letter-spacing: 8px;
+  text-decoration: none;
+  color: var(--text-color);
+  user-select: none;
+  font-variation-settings: "CTGR" 100, "wdth" 100;
+  position: absolute;
+  left: 40px;
+  top: 8px;
+}
+
+.nav-menu {
+  position: absolute;
+  left: 1518px;
+  top: 25px;
+  display: flex;
+  gap: 26px;
+}
+
+.nav-link {
+  font-family: var(--font-kr);
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.36px;
+  text-decoration: none;
+  color: var(--text-color);
+  opacity: 0.4;
+  transition: opacity 0.2s ease;
+}
+
+.nav-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* 3. Viewport Scaling Layout */
+.poster-viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center; /* Center container vertically */
+  justify-content: center; /* Center container horizontally */
+  background-color: var(--bg-color);
+  overflow: hidden;
+}
+
+/* Scaled absolute poster container matching 1920x1080 design */
+.poster-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(var(--scale-factor));
+  transform-origin: center center;
+  width: 1920px;
+  height: 1080px;
+  flex-shrink: 0;
+}
+
+/* 4. Background Letters (Foreground Overlaps) */
+.bg-letters-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+  font-size: 600px;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--text-color);
+  z-index: 10; /* Letters are in the foreground, overlapping the images */
+}
+
+.bg-letter {
+  position: absolute;
+  display: inline-block;
+  opacity: 1;
+}
+
+/* Exact Figma coordinate letter placements and font sizes */
+#coord-3 {
+  color: #000;
+  font-family: "Noto Serif KR", serif;
+  font-size: 600px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; /* 960px */
+  letter-spacing: -12px;
+  left: calc(-73px - max(0px, (var(--container-width, 1920px) - 1920px) / 2)); /* Extend past left viewport edge */
+  top: 48px;
+}
+
+#coord-s {
+  color: #000;
+  font-family: "Noto Serif Display", serif;
+  font-size: 600px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; /* 960px */
+  letter-spacing: -12px;
+  left: calc(28% - 40px); /* Distribute dynamically */
+  top: 73px;
+}
+
+#coord-75 {
+  color: #000;
+  font-family: "Noto Serif KR", serif;
+  font-size: 600px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; /* 960px */
+  letter-spacing: -60px;
+  left: calc(58% - 250px); /* Distribute dynamically */
+  top: 48px;
+}
+
+#coord-n {
+  color: #000;
+  font-family: "Noto Serif Display", serif;
+  font-size: 600px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; /* 960px */
+  letter-spacing: -12px;
+  right: calc(-44px - max(0px, (var(--container-width, 1920px) - 1920px) / 2)); /* Extend past right viewport edge */
+  top: 73px;
+}
+
+/* 5. Overlapping Image Panels (Static opacity, no zoom transitions) */
+.images-container {
+  position: absolute;
+  inset: 0;
+  z-index: 5; /* Renders in front of #coord-3, behind other letters */
+}
+
+.img-wrapper {
+  position: absolute;
+  overflow: hidden;
+  background-color: #f6f6f6;
+  transition: opacity 0.3s ease;
+}
+
+.img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-top-left img {
+  object-position: center top; /* Keeps the sun and sunset sky visible */
+}
+
+.img-bottom-middle img {
+  object-position: center bottom; /* Shows down to the person's legs */
+}
+
+/* Image placements & opacities */
+.img-top-left {
+  left: calc(4.17% + 37px); /* approx 117px */
+  top: 80px;
+  width: 523px;
+  height: 341px;
+  opacity: 0.8;
+}
+
+.img-bottom-middle {
+  left: calc(41.67% + 15px); /* approx 815px */
+  bottom: 0;
+  width: 445px;
+  height: 427px;
+  opacity: 0.9;
+}
+
+.img-top-right {
+  right: calc((1920px - var(--container-width, 1920px)) / 2); /* Flush with viewport right edge */
+  top: 80px;
+  width: 408px; /* Keep original proportions */
+  height: 573px;
+  opacity: 0.8;
+}
+
+.img-wrapper:hover {
+  opacity: 1;
+}
+
+/* 6. Information Text Overlays */
+.content-overlays {
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+  pointer-events: none;
+}
+
+.text-block {
+  position: absolute;
+  font-family: var(--font-kr);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: -0.36px;
+  color: var(--text-color);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.info-top-right {
+  left: calc(62.5% + 2px); /* approx 1202px */
+  top: 120px;
+}
+
+.info-top-right .heading {
+  font-weight: 600;
+}
+
+.info-bottom-left {
+  left: calc(12.5% + 32px); /* approx 272px */
+  bottom: 134px;
+}
+
+.info-bottom-left p {
+  margin-bottom: 2px;
+}
+
+/* ==========================================================================
+   7. Collection View Layout (Dynamic Staggered Selection)
+   ========================================================================== */
+
+/* Adapt body for collection page */
+.page-collection {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+.nav-link.active {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ==========================================================================
+   7. Collection View Layout (Dynamic Theme & Split Design)
+   ========================================================================== */
+
+/* Collection page viewport (Matches index.html proportional scaling) */
+.collection-viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center; /* Center container vertically */
+  justify-content: center; /* Center container horizontally */
+  transition: background-color 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  overflow: hidden;
+}
+
+/* Scaled absolute collection container matching 1920x1080 design */
+.collection-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(var(--scale-factor));
+  transform-origin: center center;
+  width: 1920px;
+  height: 1080px;
+  flex-shrink: 0;
+  z-index: 5;
+}
+
+/* --- New Collection Intro Page (1920x2080, Scrollable) --- */
+
+/* Adapt body for collection intro page */
+.page-collection-intro {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  width: 100vw;
+  height: 100% !important;
+  background-color: #ffffff;
+}
+
+/* Collection intro page viewport */
+.collection-intro-viewport {
+  position: relative;
+  width: 100vw;
+  height: calc(2080px * var(--scale-factor));
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start; /* Align container to the top */
+  justify-content: center; /* Center container horizontally */
+  transition: background-color 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  background-color: transparent;
+  overflow: visible;
+}
+
+/* Scaled absolute collection intro container matching 1920x2080 design */
+.collection-intro-container {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0) scale(var(--scale-factor));
+  transform-origin: top center;
+  width: 1920px;
+  height: 2080px;
+  flex-shrink: 0;
+  z-index: 5;
+}
+
+/* Fixed Sticky Header (collection-intro page) */
+.site-header-fixed {
+  position: fixed;
+  top: max(0px, calc(50vh - 540px * var(--scale-factor)));
+  left: max(0px, calc(50vw - 960px * var(--scale-factor)));
+  width: calc(1920px * var(--scale-factor));
+  height: calc(80px * var(--scale-factor));
+  display: block;
+  z-index: 1000;
+  background-color: #ffffff;
+}
+
+/* Match scaled site-header: absolute positioning with scale-factor */
+.site-header-fixed .brand-logo {
+  position: absolute;
+  left: calc(40px * var(--scale-factor));
+  top: calc(8px * var(--scale-factor));
+  font-size: calc(40px * var(--scale-factor));
+  letter-spacing: calc(8px * var(--scale-factor));
+}
+
+.site-header-fixed .nav-menu {
+  position: absolute;
+  left: calc(1518px * var(--scale-factor));
+  top: calc(25px * var(--scale-factor));
+  gap: calc(26px * var(--scale-factor));
+}
+
+.site-header-fixed .nav-link {
+  font-size: calc(18px * var(--scale-factor));
+}
+
+/* ── Collection Intro: fixed nav wrap (same pattern as shop_nature) ── */
+/* ── Collection Intro: ambient blurred bg fills viewport margins ── */
+.ci-ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.ci-ambient-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(32px) brightness(0.85);
+  transform: scale(1.08); /* prevents blur edge artifacts */
+}
+
+.ci-header-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(80px * var(--scale-factor));
+  z-index: 1000;
+  background: #ffffff;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ci-header-wrap.ci-nav-hidden {
+  transform: translateY(-200%);
+}
+/* Inner 1920px canvas — same scale transform as other containers */
+.ci-header-inner {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1920px;
+  transform-origin: top center;
+  transform: translateX(-50%) scale(var(--scale-factor));
+}
+.ci-header-inner .site-header {
+  background-color: #ffffff;
+}
+
+/* Background Image */
+.page-collection-intro .collection-bg-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 2080px;
+  z-index: 1;
+  /* Fade out left & right edges to blend into the ambient blurred bg */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 4%,
+    black 96%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 4%,
+    black 96%,
+    transparent 100%
+  );
+}
+
+.page-collection-intro .collection-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Foreground Woman Overlay for 3D depth effect */
+.page-collection-intro .collection-fg-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 2080px;
+  z-index: 12; /* Between title words (z-index: 10) and other UI elements */
+  pointer-events: none; /* Make sure users can select texts or scroll normally */
+}
+
+.page-collection-intro .collection-fg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Massive Serif Typography */
+.page-collection-intro .collection-title-word {
+  position: absolute;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 180px;
+  line-height: 1.6;
+  letter-spacing: 3.6px;
+  color: #ffffff;
+  white-space: nowrap;
+  z-index: 10;
+  font-variation-settings: "CTGR" 100, "wdth" 100;
+  margin: 0;
+}
+
+.page-collection-intro .col-word-every {
+  left: 37px;
+  top: 906px;
+}
+
+.page-collection-intro .col-word-scent {
+  left: 341px;
+  top: 1066px;
+}
+
+.page-collection-intro .col-word-becomes {
+  left: 187px;
+  top: 1210px;
+}
+
+.page-collection-intro .col-word-memory {
+  left: 32px;
+  top: 1354px;
+}
+
+/* Information Blocks */
+.page-collection-intro .col-info-block {
+  position: absolute;
+  font-family: var(--font-kr);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.6;
+  letter-spacing: 0.48px;
+  color: #ffffff;
+  z-index: 20;
+}
+
+.page-collection-intro .col-info-new-memory {
+  left: 40px;
+  top: 670px;
+  text-align: left;
+}
+
+.page-collection-intro .col-info-signature-perfume {
+  left: 264px;
+  width: 119px;
+  top: 670px;
+  text-align: center;
+}
+
+.page-collection-intro .col-info-emotion-atmosphere {
+  left: 491px;
+  width: 149px;
+  top: 670px;
+  text-align: right;
+}
+
+.page-collection-intro .col-info-description {
+  left: 40px;
+  top: 1802px;
+  text-align: left;
+}
+
+/* Bottom Right Details Panel */
+.page-collection-intro .col-details-panel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 2080px;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.page-collection-intro .col-details-panel * {
+  pointer-events: auto;
+}
+
+.page-collection-intro .col-details-senti,
+.page-collection-intro .col-details-spring,
+.page-collection-intro .col-details-year,
+.page-collection-intro .col-details-tagline {
+  position: absolute;
+  font-family: var(--font-kr);
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 1.6;
+  letter-spacing: 0.64px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.page-collection-intro .col-details-senti {
+  left: 1048px;
+  top: 1726px;
+}
+
+.page-collection-intro .col-details-spring {
+  left: 1358px;
+  top: 1726px;
+}
+
+.page-collection-intro .col-details-year {
+  left: 1668px;
+  top: 1726px;
+}
+
+.page-collection-intro .col-details-tagline {
+  left: 1048px;
+  top: 1868px;
+}
+
+/* Fullscreen Background Image Overlay (Used in Memoir, Linger) */
+.collection-bg-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), background-image 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.collection-bg-overlay.active {
+  opacity: 0.9;
+}
+
+.collection-bg-mask {
+  position: absolute;
+  inset: 0;
+  background-color: #000000;
+  opacity: 0.4;
+  z-index: 3;
+}
+
+/* Theme styling classes applied to body */
+body.theme-nature {
+  background-color: #ffffff;
+  color: #000000;
+}
+body.theme-city {
+  background-color: #020202;
+  color: #ffffff;
+}
+body.theme-memoir {
+  background-color: #000000;
+  color: #ffffff;
+}
+body.theme-silence {
+  background-color: #131b2c;
+  color: #ffffff;
+}
+body.theme-linger {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Theme Header Transitions */
+body.theme-nature .brand-logo,
+body.theme-nature .nav-link {
+  color: #000000;
+}
+body.theme-city .brand-logo,
+body.theme-memoir .brand-logo,
+body.theme-silence .brand-logo,
+body.theme-linger .brand-logo {
+  color: #ffffff;
+}
+body.theme-city .nav-link,
+body.theme-memoir .nav-link,
+body.theme-silence .nav-link,
+body.theme-linger .nav-link {
+  color: #ffffff;
+}
+
+/* Center Image Container & Transitions */
+.collection-center-image-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  transition: width 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              height 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              top 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              left 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.collection-center-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.4s ease;
+}
+
+/* Coordinates from Figma */
+.collection-center-image-wrapper.nature {
+  width: 600px;
+  height: 765px;
+  top: 50%;
+  left: 50%;
+  opacity: 1;
+}
+.collection-center-image-wrapper.city {
+  width: 755px;
+  height: 1133px; /* Extends/overflows vertically */
+  top: 50%;
+  left: 50%;
+  opacity: 1;
+}
+.collection-center-image-wrapper.silence {
+  width: 600px;
+  height: 600px;
+  top: 50%;
+  left: 50%;
+  opacity: 0.7; /* Opacity 70% in Figma */
+}
+.collection-center-image-wrapper.memoir,
+.collection-center-image-wrapper.linger {
+  width: 600px;
+  height: 600px;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+}
+
+/* Description text blocks with dynamic coordinates and transitions */
+.collection-desc-container {
+  position: absolute;
+  font-family: var(--font-kr);
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1.6;
+  letter-spacing: 0.56px;
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(20px); /* Start shifted down */
+  transition: opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+              color 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+}
+
+.collection-desc-container.active {
+  opacity: 1;
+  transform: translateY(0); /* Slide up to original position */
+}
+
+.collection-desc-container p {
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Dynamic positions calculated from Figma coordinates */
+.collection-desc-container.nature {
+  left: 1358px;
+  top: 460px;
+  width: 505px;
+  color: #000000;
+}
+.collection-desc-container.city {
+  left: 40px;
+  top: 450px;
+  width: 668px;
+  color: #ffffff;
+}
+.collection-desc-container.memoir {
+  left: 40px;
+  top: 108px;
+  width: 622px;
+  color: #ffffff;
+}
+.collection-desc-container.silence {
+  left: 195px;
+  top: 770px;
+  width: 639px;
+  color: #ffffff;
+}
+.collection-desc-container.linger {
+  left: 1358px;
+  top: 405px;
+  width: 532px;
+  color: #ffffff;
+}
+
+/* Collection Menu (Bottom Right) */
+.collection-menu-container {
+  position: absolute;
+  left: 1358px;
+  top: 822px;
+  width: 505px;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.collection-menu-title {
+  font-family: var(--font-kr);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.6;
+  letter-spacing: 0.48px;
+  margin-bottom: 20px;
+}
+
+.collection-menu-list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.collection-menu-item {
+  position: relative;
+  height: 29px; /* Matches 29px line height steps in Figma */
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.collection-menu-item.active {
+  opacity: 1;
+}
+
+.collection-menu-item:hover {
+  opacity: 0.85;
+}
+
+.collection-menu-item.active:hover {
+  opacity: 1;
+}
+
+.menu-label {
+  position: absolute;
+  left: 0;
+  font-family: var(--font-kr);
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.36px;
+}
+
+.menu-desc {
+  position: absolute;
+  left: 155px; /* Offset from label: 1513px - 1358px = 155px */
+  font-family: var(--font-kr);
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.36px;
+}
+
+/* Dynamic Dot Indicator (Ellipse 1) */
+.collection-menu-dot {
+  position: absolute;
+  left: -24px; /* x=1334px relative to x=1358px -> -24px */
+  width: 4px;
+  height: 4px;
+  background-color: currentColor;
+  border-radius: 50%;
+  transition: top 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  top: 13px; /* Centered in first item */
+}
+
+/* ==========================================================================
+   8. Slogan Page Layout (Clean Typographic Editorial)
+   ========================================================================== */
+.page-slogan {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+.slogan-viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.slogan-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(var(--scale-factor));
+  transform-origin: center center;
+  width: 1920px;
+  height: 1080px;
+  flex-shrink: 0;
+}
+
+/* Slogan Large Title */
+.slogan-title {
+  position: absolute;
+  left: 50%;
+  top: 130px; /* Shifted down to avoid header overlap */
+  transform: translateX(-50%);
+  font-family: var(--font-kr);
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 1.35; /* Premium condensed line height */
+  letter-spacing: 1.2px;
+  color: #0a0a0a;
+  text-align: center;
+  white-space: nowrap;
+}
+.slogan-title p {
+  margin-bottom: 0;
+}
+
+/* Slogan Image Placement */
+.slogan-img-wrapper {
+  position: absolute;
+  left: 50%;
+  bottom: 130px; /* Shifted down to balance vertical space */
+  transform: translateX(-50%);
+  width: 290px;
+  height: 342px;
+  overflow: hidden;
+  opacity: 0.9;
+  background-color: #f6f6f6;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+.slogan-img-wrapper img {
+  position: absolute;
+  width: 100%;
+  height: 126.76%;
+  object-fit: cover;
+  left: 0;
+  top: -23.3%; /* Figma vertical offset */
+}
+
+/* Slogan Tagline */
+.slogan-tagline {
+  position: absolute;
+  left: 50%;
+  bottom: 40px; /* Shifted down to balance vertical space */
+  transform: translateX(-50%);
+  font-family: var(--font-kr);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: 0.36px;
+  color: #000000;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   9. Page Scroll Transitions
+   ========================================================================== */
+body {
+  transition: opacity 0.5s ease;
+}
+
+.page-transitioning {
+  opacity: 0;
+}
+
+/* ==========================================================================
+   10. Premium Typographic Entrance Interactions (Staggered Reveals)
+   ========================================================================== */
+
+/* --- A. Common Header Reveal --- */
+.site-header {
+  opacity: 0;
+  transform: translateY(-15px);
+  transition: opacity 1.0s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 1.0s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.reveal-active .site-header {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+/* --- B. Landing Page (index.html) --- */
+.bg-letter {
+  transition: opacity 1.4s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body:not(.reveal-active) .bg-letter {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.reveal-active #coord-3 { transition-delay: 0.1s; }
+.reveal-active #coord-s { transition-delay: 0.25s; }
+.reveal-active #coord-75 { transition-delay: 0.4s; }
+.reveal-active #coord-n { transition-delay: 0.55s; }
+
+body:not(.reveal-active) .poster-container .img-wrapper {
+  opacity: 0;
+  transform: scale(0.95) translateY(20px);
+}
+.reveal-active .poster-container .img-wrapper {
+  transition: opacity 1.4s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.poster-container .img-wrapper:hover {
+  opacity: 1;
+  transition: opacity 0.3s ease; /* Snappy hover override */
+}
+.reveal-active .img-top-left { transition-delay: 0.2s; }
+.reveal-active .img-bottom-middle { transition-delay: 0.4s; }
+.reveal-active .img-top-right { transition-delay: 0.6s; }
+
+.text-block {
+  transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body:not(.reveal-active) .text-block {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.reveal-active .info-top-right { transition-delay: 0.5s; }
+.reveal-active .info-bottom-left { transition-delay: 0.7s; }
+
+/* --- C. Collection Page (collection.html) --- */
+body:not(.reveal-active) .collection-center-image-wrapper {
+  transform: translate(-50%, -45%) scale(0.95) !important;
+  opacity: 0 !important;
+}
+
+/* Staggered text block elements (animates on load AND category switch) */
+.collection-desc-container p {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.collection-desc-container.active p {
+  opacity: 1;
+  transform: translateY(0);
+}
+.collection-desc-container.active p:nth-child(1) { transition-delay: 0.05s; }
+.collection-desc-container.active p:nth-child(2) { transition-delay: 0.18s; }
+.collection-desc-container.active p:nth-child(3) { transition-delay: 0.31s; }
+.collection-desc-container.active p:nth-child(4) { transition-delay: 0.44s; }
+
+.collection-desc-container:not(.active) p {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition-delay: 0s !important;
+}
+
+/* Menu title entrance */
+.collection-menu-title {
+  transition: opacity 1.0s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 1.0s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body:not(.reveal-active) .collection-menu-title {
+  opacity: 0;
+  transform: translateY(15px);
+}
+.reveal-active .collection-menu-title {
+  transition-delay: 0.2s;
+}
+
+/* Menu items entrance */
+.collection-menu-item {
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body:not(.reveal-active) .collection-menu-item {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* Menu dot entrance */
+body:not(.reveal-active) .collection-menu-dot {
+  opacity: 0;
+}
+
+/* Stagger delays only during the initial reveal (cleared after reveal completes) */
+body:not(.reveal-completed) .reveal-active .collection-menu-item:nth-child(2) { transition-delay: 0.3s; }
+body:not(.reveal-completed) .reveal-active .collection-menu-item:nth-child(3) { transition-delay: 0.38s; }
+body:not(.reveal-completed) .reveal-active .collection-menu-item:nth-child(4) { transition-delay: 0.46s; }
+body:not(.reveal-completed) .reveal-active .collection-menu-item:nth-child(5) { transition-delay: 0.54s; }
+body:not(.reveal-completed) .reveal-active .collection-menu-item:nth-child(6) { transition-delay: 0.62s; }
+body:not(.reveal-completed) .reveal-active .collection-menu-dot { transition-delay: 0.3s; }
+
+/* --- D. Slogan Page (slogan.html) --- */
+.slogan-title p {
+  transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body:not(.reveal-active) .slogan-title p {
+  opacity: 0;
+  transform: translateY(25px);
+}
+.reveal-active .slogan-title p:nth-child(1) { transition-delay: 0.1s; }
+.reveal-active .slogan-title p:nth-child(2) { transition-delay: 0.25s; }
+.reveal-active .slogan-title p:nth-child(3) { transition-delay: 0.4s; }
+.reveal-active .slogan-title p:nth-child(4) { transition-delay: 0.55s; }
+
+.slogan-img-wrapper {
+  transition: opacity 1.4s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body:not(.reveal-active) .slogan-img-wrapper {
+  opacity: 0;
+  transform: translateX(-50%) scale(0.96) translateY(20px);
+}
+.reveal-active .slogan-img-wrapper {
+  transition-delay: 0.55s;
+}
+
+.slogan-tagline {
+  transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body:not(.reveal-active) .slogan-tagline {
+  opacity: 0;
+  transform: translateX(-50%) translateY(15px);
+}
+.reveal-active .slogan-tagline {
+  transition-delay: 0.75s;
+}
+
+/* ==========================================================================
+   9. Brand Story Page Layout (Editorial Grid)
+   ========================================================================== */
+.page-story {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+.story-viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.story-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(var(--scale-factor));
+  transform-origin: center center;
+  width: 1920px; /* Restored to fixed 16:9 aspect ratio */
+  height: 1080px;
+  flex-shrink: 0;
+}
+
+/* Large Slogan Title on Story Page */
+.story-title-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 100px;
+  line-height: 1.2;
+  letter-spacing: 2px;
+  color: #0a0a0a;
+  text-align: center;
+  text-transform: uppercase;
+  z-index: 10;
+  pointer-events: none;
+  user-select: none;
+}
+
+.story-title-word {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+#story-word-story { top: -245px; }
+#story-word-of { top: -142px; }
+#story-word-the { top: -39px; }
+#story-word-senti { top: 64px; }
+
+/* Image Panel Containers & Inner Crops */
+.story-images-container {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+}
+
+.story-img-wrapper {
+  position: absolute;
+  overflow: hidden;
+  background-color: #f6f6f6;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.story-img-wrapper:hover {
+  opacity: 1;
+}
+
+.story-img-wrapper img {
+  position: absolute;
+  max-w: none;
+  pointer-events: none;
+}
+
+/* Individual Image Placements & Crops */
+.img-story-left-top {
+  left: 272px; /* calc(12.5% + 32px) on 1920px */
+  top: 86px;
+  width: 444px;
+  height: 537px;
+}
+.img-story-left-top img {
+  width: 100.09%;
+  height: 124.21%;
+  left: -0.05%;
+  top: -15.46%;
+}
+
+.img-story-left-bottom {
+  left: 40px;
+  top: 501px;
+  width: 445px;
+  height: 539px;
+}
+.img-story-left-bottom img {
+  width: 100%;
+  height: 146.72%;
+  left: 0;
+  top: -3.65%;
+}
+
+.img-story-center-bottom {
+  bottom: 0;
+  left: 737px; /* Centered inside 1920px container (960 - 222.5) */
+  width: 445px;
+  height: 410px;
+}
+.img-story-center-bottom img {
+  width: 166.61%;
+  height: 101.71%;
+  left: -29.93%;
+  top: -1.63%;
+}
+
+.img-story-right-top {
+  left: 1357px; /* Restored to Figma left coordinate */
+  top: 0;
+  width: 445px;
+  height: 458px;
+}
+.img-story-right-top img {
+  width: 100%;
+  height: 172.77%;
+  left: 0;
+  top: -72.63%;
+}
+
+.img-story-right-bottom {
+  left: 1667px; /* Restored to Figma left coordinate (calc(87.5% - 13px)) */
+  top: 670px;
+  width: 269px;
+  height: 245px;
+}
+.img-story-right-bottom img {
+  width: 158.09%;
+  height: 308.13%;
+  left: -57.93%;
+  top: -104.07%;
+}
+
+/* Narrative Text Containers & Blocks */
+.story-text-container {
+  position: absolute;
+  left: 1202px; /* Restored to Figma left coordinate (calc(75% - 238px)) */
+  top: 670px;
+  width: 445px;
+  z-index: 15;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Natural spacing to prevent responsive wrapping overlap */
+}
+
+.story-text-block {
+  font-family: var(--font-kr);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: 0.36px;
+  color: var(--text-color);
+  pointer-events: auto;
+}
+
+/* Entrance Staggered Reveals for Story Page */
+.story-title-word {
+  transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body:not(.reveal-active) .story-title-word {
+  opacity: 0;
+  transform: translate(-50%, 25px);
+}
+.reveal-active #story-word-story { transition-delay: 0.1s; }
+.reveal-active #story-word-of { transition-delay: 0.25s; }
+.reveal-active #story-word-the { transition-delay: 0.4s; }
+.reveal-active #story-word-senti { transition-delay: 0.55s; }
+
+.story-img-wrapper {
+  transition: opacity 1.4s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body:not(.reveal-active) .story-img-wrapper {
+  opacity: 0;
+  transform: translateY(20px);
+}
+body:not(.reveal-active) .img-story-center-bottom {
+  transform: translateY(20px);
+}
+
+.reveal-active .img-story-left-top { transition-delay: 0.3s; }
+.reveal-active .img-story-left-bottom { transition-delay: 0.45s; }
+.reveal-active .img-story-center-bottom { transition-delay: 0.6s; }
+.reveal-active .img-story-right-top { transition-delay: 0.75s; }
+.reveal-active .img-story-right-bottom { transition-delay: 0.9s; }
+
+.story-text-block {
+  transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body:not(.reveal-active) .story-text-block {
+  opacity: 0;
+  transform: translateY(15px);
+}
+.reveal-active .story-text-1 { transition-delay: 0.8s; }
+.reveal-active .story-text-2 {
+  transition-delay: 0.95s;
+}
+
+/* ==========================================================================
+   10. Keywords Page Layout (Editorial Text Grid)
+   ========================================================================== */
+.page-keyword {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+.keyword-viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.keyword-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(var(--scale-factor));
+  transform-origin: center center;
+  width: 1920px; /* Locked to 16:9 box */
+  height: 1080px;
+  flex-shrink: 0;
+}
+
+/* Description Block (top left) */
+.keyword-desc-block {
+  position: absolute;
+  left: 40px;
+  top: 60px;
+  font-family: var(--font-kr);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.6;
+  letter-spacing: 0.48px;
+  color: #000000;
+}
+
+/* Keywords Typography */
+.keyword-text {
+  position: absolute;
+  font-family: var(--font-kr);
+  font-weight: 400;
+  font-size: 100px;
+  line-height: 1.6;
+  letter-spacing: -2px;
+  color: #000000;
+  white-space: nowrap;
+}
+
+/* Image Wrappers */
+.keyword-img-wrapper {
+  position: absolute;
+  overflow: hidden;
+  background-color: #f6f6f6;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.keyword-img-wrapper:hover {
+  opacity: 1;
+}
+
+.keyword-img-inner {
+  position: absolute;
+  inset: 0;
+}
+
+.keyword-img-inner img {
+  position: absolute;
+  max-w: none;
+  pointer-events: none;
+}
+
+/* Row 1 Positions (top: 320px) */
+.kw-seoul { left: -10px; top: 320px; }
+.kw-img-37 {
+  left: 273px;
+  top: 338px;
+  width: 135px;
+  height: 123px;
+}
+.kw-img-37 img {
+  width: 100.15%;
+  height: 137.4%;
+  left: -0.07%;
+  top: -18.3%;
+}
+
+.kw-gangwon { left: 408px; top: 320px; }
+.kw-img-38 {
+  left: 933px;
+  top: 338px;
+  width: 172px;
+  height: 123px;
+}
+.kw-img-38 img {
+  width: 100.62%;
+  height: 250.64%;
+  left: -0.23%;
+  top: -54.73%;
+}
+
+.kw-bukchon { left: 1105px; top: 320px; }
+.kw-img-39 {
+  left: 1604px;
+  top: 338px;
+  width: 135px;
+  height: 123px;
+}
+.kw-img-39 img {
+  width: 100%;
+  height: 135.47%;
+  left: 0;
+  top: -17.44%;
+}
+
+.kw-seongsu { left: 1739px; top: 320px; }
+
+/* Row 2 Positions (top: 500px) */
+.kw-premium { left: -347px; top: 500px; }
+.kw-img-40 {
+  left: 118px;
+  top: 518px;
+  width: 135px;
+  height: 123px;
+}
+.kw-img-40 img {
+  width: 100%;
+  height: 146.29%;
+  left: 0;
+  top: -20.03%;
+}
+
+.kw-niche { left: 253px; top: 500px; }
+.kw-img-41 {
+  left: 605px;
+  top: 518px;
+  width: 87px;
+  height: 123px;
+}
+.kw-img-41 img {
+  width: 100%;
+  height: 125.57%;
+  left: 0;
+  top: -10.53%;
+}
+
+.kw-perfume { left: 692px; top: 500px; }
+.kw-img-42 {
+  left: 1173px;
+  top: 518px;
+  width: 135px;
+  height: 123px;
+}
+.kw-img-42 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.kw-handcrafted { left: 1308px; top: 500px; }
+
+/* Row 3 Positions (top: 680px) */
+.kw-dawn { left: 21px; top: 680px; }
+.kw-img-43 {
+  left: 370px;
+  top: 698px;
+  width: 135px;
+  height: 123px;
+}
+.kw-img-43 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.kw-dusk { left: 505px; top: 680px; }
+.kw-img-44 {
+  left: 823px;
+  top: 698px;
+  width: 135px;
+  height: 123px;
+}
+.kw-img-44 img {
+  width: 100%;
+  height: 137.2%;
+  left: 0;
+  top: -0.06%;
+}
+
+.kw-midnight { left: 958px; top: 680px; }
+.kw-img-45 {
+  left: 1470px;
+  top: 698px;
+  width: 135px;
+  height: 123px;
+}
+.kw-img-45 img {
+  width: 100%;
+  height: 132.72%;
+  left: 0;
+  top: -33.08%;
+}
+
+.kw-morningair { left: 1605px; top: 680px; }
+
+/* Row 4 Positions (top: 860px) */
+.kw-forest { left: -95px; top: 860px; }
+.kw-img-46 {
+  left: 216px;
+  top: 878px;
+  width: 192px;
+  height: 123px;
+}
+.kw-img-46 img {
+  width: 100%;
+  height: 155.89%;
+  left: 0;
+  top: -38.18%;
+}
+
+.kw-alley { left: 408px; top: 860px; }
+.kw-img-47 {
+  left: 723px;
+  top: 878px;
+  width: 135px;
+  height: 123px;
+}
+.kw-img-47 img {
+  width: 100%;
+  height: 146.34%;
+  left: 0;
+  top: -4.57%;
+}
+
+.kw-rain { left: 858px; top: 860px; }
+.kw-img-48 {
+  left: 1153px;
+  top: 878px;
+  width: 135px;
+  height: 123px;
+}
+.kw-img-48 img {
+  width: 100%;
+  height: 146.29%;
+  left: 0;
+  top: -0.29%;
+}
+
+.kw-petal { left: 1288px; top: 860px; }
+.kw-img-50 {
+  left: 1597px;
+  top: 878px;
+  width: 90px;
+  height: 123px;
+}
+.kw-img-50 img {
+  width: 100%;
+  height: 121.84%;
+  left: 0;
+  top: -13.59%;
+}
+
+.kw-warm { left: 1687px; top: 860px; }
+
+
+/* Entrance Staggered Reveals for Keywords Page */
+.keyword-desc-block {
+  transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body:not(.reveal-active) .keyword-desc-block {
+  opacity: 0;
+  transform: translateY(15px);
+}
+.reveal-active .keyword-desc-block { transition-delay: 0.1s; }
+
+.keyword-text {
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body:not(.reveal-active) .keyword-text {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.keyword-img-wrapper {
+  transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body:not(.reveal-active) .keyword-img-wrapper {
+  opacity: 0;
+  transform: scale(0.9) translateY(15px);
+}
+
+/* Stagger by Rows */
+.reveal-active .kw-seoul,
+.reveal-active .kw-img-37,
+.reveal-active .kw-gangwon,
+.reveal-active .kw-img-38,
+.reveal-active .kw-bukchon,
+.reveal-active .kw-img-39,
+.reveal-active .kw-seongsu {
+  transition-delay: 0.2s;
+}
+
+.reveal-active .kw-premium,
+.reveal-active .kw-img-40,
+.reveal-active .kw-niche,
+.reveal-active .kw-img-41,
+.reveal-active .kw-perfume,
+.reveal-active .kw-img-42,
+.reveal-active .kw-handcrafted {
+  transition-delay: 0.4s;
+}
+
+.reveal-active .kw-dawn,
+.reveal-active .kw-img-43,
+.reveal-active .kw-dusk,
+.reveal-active .kw-img-44,
+.reveal-active .kw-midnight,
+.reveal-active .kw-img-45,
+.reveal-active .kw-morningair {
+  transition-delay: 0.6s;
+}
+
+.reveal-active .kw-forest,
+.reveal-active .kw-img-46,
+.reveal-active .kw-alley,
+.reveal-active .kw-img-47,
+.reveal-active .kw-rain,
+.reveal-active .kw-img-48,
+.reveal-active .kw-petal,
+.reveal-active .kw-img-50,
+.reveal-active .kw-warm {
+  transition-delay: 0.8s;
+}
+
+/* ==========================================================================
+   11. Shop Page Layout (Widescreen Horizontal Scroll)
+   ========================================================================== */
+.page-shop {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+.shop-viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+/* Shop page: full-viewport white nav bar that masks content above it */
+.shop-header-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(80px * var(--scale-factor));
+  background-color: #ffffff;
+  z-index: 100;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Inner scaled wrapper for nav content positioning */
+.shop-header-inner {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%) scale(var(--scale-factor));
+  transform-origin: top center;
+  width: 1920px;
+  height: 80px;
+  pointer-events: none;
+}
+
+.shop-header-container *,
+.shop-header-inner * {
+  pointer-events: auto;
+}
+
+/* Sliding content container (3840px width, height 1080px)
+   Offset top by half the nav height (40px) so content centers in the area below the nav */
+.shop-container {
+  position: absolute;
+  left: 0;
+  top: calc(50% + 40px * var(--scale-factor));
+  transform: translate3d(0, -50%, 0) scale(var(--scale-factor));
+  transform-origin: left center;
+  width: 3840px;
+  height: 1080px;
+  flex-shrink: 0;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Common Letter Styling */
+.shop-letter {
+  position: absolute;
+  font-family: 'Noto Serif Display', serif;
+  font-weight: 300;
+  font-size: 1520px;
+  line-height: 1;
+  color: #000000;
+  white-space: nowrap;
+  letter-spacing: normal;
+}
+
+/* Image Panels */
+.shop-img-panel {
+  position: absolute;
+  overflow: hidden;
+}
+
+.shop-img-panel img {
+  position: absolute;
+  pointer-events: none;
+  max-width: none;
+}
+
+/* Left Image (image 51) */
+.shop-img-51 {
+  left: -156px;
+  top: 0;
+  width: 958px;
+  height: 1080px;
+}
+
+.shop-img-51 img {
+  width: 100.06%;
+  height: 130.46%;
+  left: -0.03%;
+  top: -30.46%;
+}
+
+/* Right Image (image 52) */
+.shop-img-52 {
+  left: 2760px;
+  top: 0;
+  width: 1080px;
+  height: 1080px;
+}
+
+.shop-img-52 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Union Shape */
+.shop-union-shape {
+  position: absolute;
+  left: 272.2px;
+  top: -20.48px;
+  width: 620.16px;
+  height: 1115.68px;
+}
+
+.shop-union-shape img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Letter positions (adjusted for line-height 1) */
+.letter-s {
+  left: 181px;
+  top: -270px;
+}
+
+.letter-e {
+  left: 660px;
+  top: -270px;
+}
+
+.letter-n {
+  left: 1223px;
+  top: -270px;
+}
+
+.letter-t {
+  left: 1733px;
+  top: -265px;
+}
+
+.letter-i {
+  left: 2515px;
+  top: -265px;
+}
+
+/* White background behind N */
+.shop-n-bg-rect {
+  position: absolute;
+  left: 1289px;
+  top: 0;
+  width: 365px;
+  height: 1080px;
+  background-color: #ffffff;
+}
+
+/* Bottom Line (Rectangle 33) */
+.shop-bottom-line {
+  position: absolute;
+  left: 689px;
+  top: 1065px;
+  width: 198px;
+  height: 15px;
+  background-color: #000000;
+}
+
+/* Descriptions */
+.shop-desc-block {
+  position: absolute;
+  font-family: var(--font-kr);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: 0.36px;
+}
+
+.shop-desc-left {
+  left: 1513px;
+  top: 922px;
+  color: #000000;
+}
+
+.shop-desc-middle {
+  left: 2270px;
+  top: 511px;
+  color: #000000;
+}
+
+/* Shop Details Panel */
+.shop-details-panel {
+  position: absolute;
+  left: 3355px;
+  top: 759px;
+  width: 450px;
+  height: 300px;
+  z-index: 10;
+}
+
+.shop-senti-title {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-kr);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.6;
+  letter-spacing: 0.8px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.shop-desc-btn-text {
+  position: absolute;
+  left: 0;
+  top: 74px;
+  font-family: var(--font-kr);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: 0.36px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.shop-collection-btn {
+  position: absolute;
+  left: 0;
+  top: 192px;
+  width: 290px;
+  height: 40px;
+  border: 1px solid #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.shop-collection-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.shop-collection-btn span {
+  font-family: var(--font-kr);
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.36px;
+  color: #ffffff;
+}
+
+/* --- Collection List Section (Figma node-id=51-344) --- */
+
+.collection-list-viewport {
+  position: relative;
+  width: 100vw;
+  height: calc(1425px * var(--scale-factor));
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: #ffffff;
+  overflow: visible;
+  padding-top: calc(200px * var(--scale-factor));
+  padding-bottom: calc(200px * var(--scale-factor));
+}
+
+.collection-list-container {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0) scale(var(--scale-factor));
+  transform-origin: top center;
+  width: 1920px;
+  height: 1425px;
+  flex-shrink: 0;
+  z-index: 5;
+  background-color: #ffffff;
+}
+
+.scent-list-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1425px;
+}
+
+.scent-item {
+  position: absolute;
+  height: 143px;
+  cursor: default;
+  pointer-events: none;
+}
+
+.scent-item[data-id="dawn-forest"],
+.scent-item[data-id="falling-petals"],
+.scent-item[data-id="first-snow"],
+.scent-item[data-id="3am"],
+.scent-item[data-id="rainy-alley"],
+.scent-item[data-id="the-first-day"],
+.scent-item[data-id="old-room"],
+.scent-item[data-id="silent-morning"],
+.scent-item[data-id="last-scent"] {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+
+/* Specific offsets from Figma */
+.scent-item[data-id="dawn-forest"] { left: 208px; top: 40px; width: 876px; }
+.scent-item[data-id="falling-petals"] { left: 40px; top: 183px; width: 922px; }
+.scent-item[data-id="first-snow"] { left: 363px; top: 326px; width: 763px; }
+.scent-item[data-id="3am"] { left: 285px; top: 478px; width: 366px; }
+.scent-item[data-id="rainy-alley"] { left: 181px; top: 621px; width: 761px; }
+.scent-item[data-id="the-first-day"] { left: 120px; top: 764px; width: 920px; }
+.scent-item[data-id="old-room"] { left: 159px; top: 907px; width: 726px; }
+.scent-item[data-id="silent-morning"] { left: 102px; top: 1050px; width: 1016px; }
+.scent-item[data-id="last-scent"] { left: 232px; top: 1193px; width: 730px; }
+
+/* Scent List Elements Typography */
+.scent-item .scent-category {
+  position: absolute;
+  left: 0;
+  top: 114px;
+  font-family: var(--font-kr);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.6;
+  letter-spacing: 0.48px;
+  color: #bfbfbf;
+  text-align: right;
+  transition: color 0.4s ease;
+}
+
+.scent-item .scent-name {
+  position: absolute;
+  top: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 120px;
+  line-height: 1.6;
+  letter-spacing: -2.4px;
+  color: #bfbfbf;
+  transition: color 0.4s ease;
+  white-space: nowrap;
+}
+
+/* Category Bounding Box Widths */
+.scent-item[data-id="dawn-forest"] .scent-category,
+.scent-item[data-id="falling-petals"] .scent-category,
+.scent-item[data-id="first-snow"] .scent-category { width: 124px; }
+.scent-item[data-id="3am"] .scent-category,
+.scent-item[data-id="rainy-alley"] .scent-category { width: 79px; }
+.scent-item[data-id="the-first-day"] .scent-category,
+.scent-item[data-id="old-room"] .scent-category { width: 130px; }
+.scent-item[data-id="silent-morning"] .scent-category { width: 128px; }
+.scent-item[data-id="last-scent"] .scent-category { width: 116px; }
+
+/* Name Horizonal Spacers */
+.scent-item[data-id="dawn-forest"] .scent-name,
+.scent-item[data-id="falling-petals"] .scent-name,
+.scent-item[data-id="first-snow"] .scent-name { left: 144px; }
+.scent-item[data-id="3am"] .scent-name,
+.scent-item[data-id="rainy-alley"] .scent-name { left: 99px; }
+.scent-item[data-id="the-first-day"] .scent-name,
+.scent-item[data-id="old-room"] .scent-name { left: 150px; }
+.scent-item[data-id="silent-morning"] .scent-name { left: 148px; }
+.scent-item[data-id="last-scent"] .scent-name { left: 136px; }
+
+/* Interactive Hover / Active States */
+.scent-item.active {
+  z-index: 10;
+}
+.scent-item[data-id="dawn-forest"].active .scent-category,
+.scent-item[data-id="dawn-forest"]:hover .scent-category,
+.scent-item[data-id="falling-petals"].active .scent-category,
+.scent-item[data-id="falling-petals"]:hover .scent-category,
+.scent-item[data-id="first-snow"].active .scent-category,
+.scent-item[data-id="first-snow"]:hover .scent-category,
+.scent-item[data-id="3am"].active .scent-category,
+.scent-item[data-id="3am"]:hover .scent-category,
+.scent-item[data-id="rainy-alley"].active .scent-category,
+.scent-item[data-id="rainy-alley"]:hover .scent-category,
+.scent-item[data-id="the-first-day"].active .scent-category,
+.scent-item[data-id="the-first-day"]:hover .scent-category,
+.scent-item[data-id="old-room"].active .scent-category,
+.scent-item[data-id="old-room"]:hover .scent-category,
+.scent-item[data-id="silent-morning"].active .scent-category,
+.scent-item[data-id="silent-morning"]:hover .scent-category,
+.scent-item[data-id="last-scent"].active .scent-category,
+.scent-item[data-id="last-scent"]:hover .scent-category {
+  color: #000000;
+}
+.scent-item[data-id="dawn-forest"].active .scent-name,
+.scent-item[data-id="dawn-forest"]:hover .scent-name,
+.scent-item[data-id="falling-petals"].active .scent-name,
+.scent-item[data-id="falling-petals"]:hover .scent-name,
+.scent-item[data-id="first-snow"].active .scent-name,
+.scent-item[data-id="first-snow"]:hover .scent-name,
+.scent-item[data-id="3am"].active .scent-name,
+.scent-item[data-id="3am"]:hover .scent-name,
+.scent-item[data-id="rainy-alley"].active .scent-name,
+.scent-item[data-id="rainy-alley"]:hover .scent-name,
+.scent-item[data-id="the-first-day"].active .scent-name,
+.scent-item[data-id="the-first-day"]:hover .scent-name,
+.scent-item[data-id="old-room"].active .scent-name,
+.scent-item[data-id="old-room"]:hover .scent-name,
+.scent-item[data-id="silent-morning"].active .scent-name,
+.scent-item[data-id="silent-morning"]:hover .scent-name,
+.scent-item[data-id="last-scent"].active .scent-name,
+.scent-item[data-id="last-scent"]:hover .scent-name {
+  color: #000000;
+}
+
+/* Scent Preview Card */
+.scent-preview-card {
+  position: absolute;
+  width: 485px;
+  height: 662px;
+  background-color: #ffffff;
+  z-index: 20;
+  pointer-events: none;
+  transition: left 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              top 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.5s ease;
+}
+
+.scent-preview-card * {
+  pointer-events: auto;
+}
+
+.card-coordinate {
+  position: absolute;
+  left: 20px;
+  top: 0;
+  font-family: var(--font-kr);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.6;
+  letter-spacing: 0.48px;
+  color: #000000;
+  margin: 0;
+}
+
+.card-image-wrapper {
+  position: absolute;
+  left: 20px;
+  top: 38px;
+  width: 445px;
+  height: 557px;
+  overflow: hidden;
+  background-color: #f6f6f6;
+}
+
+.card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-code {
+  position: absolute;
+  left: 20px;
+  top: 595px;
+  font-family: var(--font-kr);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.6;
+  letter-spacing: 0.48px;
+  color: #000000;
+  margin: 0;
+}
+
+.card-desc {
+  position: absolute;
+  left: 20px;
+  top: 633px;
+  font-family: var(--font-kr);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: 0.36px;
+  color: #000000;
+  margin: 0;
+}
+
+
+/* ==========================================================================
+   Collection Showcase Section (Figma node 51-322)
+   ========================================================================== */
+
+.collection-showcase-viewport {
+  position: relative;
+  width: 100vw;
+  height: calc(1080px * var(--scale-factor));
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: #ffffff;
+  overflow: visible;
+  padding-bottom: calc(200px * var(--scale-factor));
+}
+
+.collection-showcase-container {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0) scale(var(--scale-factor));
+  transform-origin: top center;
+  width: 1920px;
+  height: 1080px;
+  flex-shrink: 0;
+  z-index: 5;
+  background-color: #ffffff;
+}
+
+/* Vertical Side Text */
+.showcase-side-text-wrapper {
+  position: absolute;
+  left: calc(6.25% - 80px);
+  top: calc(50% - 132px);
+  width: 192px;
+  height: 615px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.showcase-side-text {
+  transform: rotate(-90deg);
+  white-space: nowrap;
+  font-family: var(--font-kr);
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.6;
+  letter-spacing: 0.8px;
+  color: #000000;
+  text-align: center;
+}
+
+/* Column layout */
+.showcase-col {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.showcase-col-1 { left: calc(25% + 25px); }
+.showcase-col-2 { left: calc(54.17% + 8px); }
+.showcase-col-3 { left: calc(83.33% - 10px); }
+
+/* Product Numbers */
+.showcase-num {
+  position: absolute;
+  font-family: var(--font-kr);
+  font-weight: 400;
+  font-size: 100px;
+  line-height: 1.6;
+  letter-spacing: 2px;
+  color: #000000;
+  white-space: nowrap;
+}
+
+.showcase-col-1 .showcase-num { top: 20px; }
+.showcase-col-2 .showcase-num { top: 102px; }
+.showcase-col-3 .showcase-num { top: 20px; }
+
+/* Product Images */
+.showcase-img-wrapper {
+  position: absolute;
+  width: 445px;
+  height: 616px;
+  overflow: hidden;
+}
+
+.showcase-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  display: block;
+}
+
+.showcase-col-1 .showcase-img-wrapper { top: 180px; }
+.showcase-col-2 .showcase-img-wrapper { top: 262px; }
+.showcase-col-3 .showcase-img-wrapper { top: 180px; }
+
+/* Product Name */
+.showcase-name {
+  position: absolute;
+  font-family: var(--font-kr);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.6;
+  letter-spacing: 0.48px;
+  color: #000000;
+  white-space: nowrap;
+}
+
+.showcase-col-1 .showcase-name { top: 806px; }
+.showcase-col-2 .showcase-name { top: 888px; }
+.showcase-col-3 .showcase-name { top: 806px; }
+
+/* Product Description */
+.showcase-desc {
+  position: absolute;
+  font-family: var(--font-kr);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: 0.36px;
+  color: #000000;
+  white-space: nowrap;
+}
+
+.showcase-col-1 .showcase-desc { top: 854px; }
+.showcase-col-2 .showcase-desc { top: 936px; }
+.showcase-col-3 .showcase-desc { top: 854px; }
+
+/* Dividers */
+.showcase-divider {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 1000px;
+  background-color: #000000;
+  opacity: 0.2;
+}
+
+.showcase-divider-1 { left: calc(50% + 37px); }
+.showcase-divider-2 { left: calc(79.17% + 20px); }
+
+
+/* ==========================================================================
+   About Page Layout
+   ========================================================================== */
+.page-about {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+.about-viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.about-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(var(--scale-factor));
+  transform-origin: center center;
+  width: 1920px;
+  height: 1080px;
+  flex-shrink: 0;
+}
+
+/* Right image panel — vertically centered at 50%+40px, full height below nav */
+.about-img-wrapper {
+  position: absolute;
+  right: 0;
+  top: 80px;
+  width: 1027px;
+  height: 1000px;
+  overflow: hidden;
+}
+
+.about-img-wrapper img {
+  position: absolute;
+  width: 100.06%;
+  height: 128.4%;
+  left: -0.03%;
+  top: -22.8%;
+  pointer-events: none;
+}
+
+/* Left title */
+.about-title {
+  position: absolute;
+  left: 40px;
+  top: 328px;
+  line-height: 0;
+  white-space: nowrap;
+}
+
+.about-title p {
+  font-family: var(--font-kr);
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 1.6;
+  letter-spacing: 0.84px;
+  color: #000000;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Left body text — one <p> per visual line, no wrapping (matches Figma) */
+.about-body {
+  position: absolute;
+  left: 40px;
+  top: 549px;
+  line-height: 0;
+  white-space: nowrap;
+}
+
+.about-body p {
+  font-family: var(--font-kr);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: 0.36px;
+  color: #000000;
+  margin: 0;
+  white-space: nowrap;
+}
+
+
+/* Entrance animations */
+.about-img-wrapper {
+  transition: opacity 1.4s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body:not(.reveal-active) .about-img-wrapper {
+  opacity: 0;
+  transform: scale(0.97) translateY(20px);
+}
+.reveal-active .about-img-wrapper {
+  transition-delay: 0.2s;
+}
+
+.about-title p {
+  transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body:not(.reveal-active) .about-title p {
+  opacity: 0;
+  transform: translateY(25px);
+}
+.reveal-active .about-title p:nth-child(1) { transition-delay: 0.15s; }
+.reveal-active .about-title p:nth-child(2) { transition-delay: 0.28s; }
+.reveal-active .about-title p:nth-child(3) { transition-delay: 0.41s; }
+
+.about-body {
+  transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body:not(.reveal-active) .about-body {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.reveal-active .about-body {
+  transition-delay: 0.55s;
+}
+
+
+
+
+
+
+/* ==========================================================================
+   Brand Page Layout (2026 + description)
+   ========================================================================== */
+.page-brand {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+.brand-viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.brand-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(var(--scale-factor));
+  transform-origin: center center;
+  width: 1920px;
+  height: 1080px;
+  flex-shrink: 0;
+}
+
+/* Large "2026" */
+.brand-year {
+  position: absolute;
+  left: 508px;
+  top: 325px;
+  font-family: 'Noto Serif Display', serif;
+  font-weight: 400;
+  font-size: 260px;
+  line-height: 1.6;
+  letter-spacing: 5.2px;
+  color: #000000;
+  margin: 0;
+  white-space: nowrap;
+  font-variation-settings: "CTGR" 100, "wdth" 100;
+}
+
+/* Brand description text */
+.brand-desc {
+  position: absolute;
+  left: 1125px;
+  top: 439px;
+  line-height: 0;
+  white-space: nowrap;
+}
+
+.brand-desc p {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: -0.36px;
+  color: #000000;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Entrance animations */
+.brand-year {
+  transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body:not(.reveal-active) .brand-year {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.reveal-active .brand-year { transition-delay: 0.1s; }
+
+.brand-desc p {
+  transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body:not(.reveal-active) .brand-desc p {
+  opacity: 0;
+  transform: translateY(15px);
+}
+.reveal-active .brand-desc p:nth-child(1) { transition-delay: 0.25s; }
+.reveal-active .brand-desc p:nth-child(2) { transition-delay: 0.32s; }
+.reveal-active .brand-desc p:nth-child(3) { transition-delay: 0.39s; }
+.reveal-active .brand-desc p:nth-child(4) { transition-delay: 0.46s; }
+.reveal-active .brand-desc p:nth-child(5) { transition-delay: 0.53s; }
+.reveal-active .brand-desc p:nth-child(6) { transition-delay: 0.60s; }
+.reveal-active .brand-desc p:nth-child(7) { transition-delay: 0.67s; }
+
+/* ==========================================================================
+   Meaning Page (SCENT · SENTIMENT · SENTIR) — 1920×2400 two-screen layout
+   ========================================================================== */
+
+/* index page meaning section — scoped to avoid collision with body.page-meaning */
+body:not(.page-meaning) .page-meaning {
+  overflow: hidden;
+  background-color: #000000;
+  --text-color: #ffffff;
+}
+
+.meaning-viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #000000;
+  /* Fill any letterbox gaps with the background photo instead of black */
+  background-image: url(assets/meaning_bg.png);
+  background-size: cover;
+  background-position: center top;
+}
+
+.meaning-container {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform-origin: top center;
+  width: 1920px;
+  height: 2160px;
+  background-color: #000000;
+  transform: translateX(-50%) scale(var(--scale-factor));
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Background photos */
+.meaning-bg,
+.meaning-back {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 2160px;
+  pointer-events: none;
+}
+.meaning-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Woman figure: black bg → transparent via screen blend.
+   Sits above the SENTI title so the woman appears in front of the letters. */
+.meaning-back img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* Giant SENTI title */
+.meaning-title {
+  position: absolute;
+  left: calc(50% - 776px);
+  top: 0;
+  font-family: 'Noto Serif Display', serif;
+  font-weight: 700;
+  font-size: 400px;
+  letter-spacing: 80px;
+  color: #ffffff;
+  white-space: nowrap;
+  line-height: 1.6;
+  font-variation-settings: "CTGR" 100, "wdth" 100;
+  pointer-events: none;
+}
+
+/* Left / right descriptor blocks */
+.meaning-text-left,
+.meaning-text-right {
+  position: absolute;
+  top: calc(50% - 516px);
+  line-height: 0;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.meaning-text-left { left: calc(20.83% - 197px); }
+.meaning-text-right { left: calc(77.08% - 221px); }
+
+.meaning-text-left p,
+.meaning-text-right p {
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.6;
+  margin: 0;
+  white-space: nowrap;
+  letter-spacing: -0.48px;
+  color: #ffffff;
+}
+
+/* Cards */
+.meaning-card {
+  position: absolute;
+  top: 1080px;
+  width: 522px;
+  height: 295px;
+  background-color: #000000;
+  overflow: hidden;
+}
+.meaning-card-scent     { left: calc(4.17% + 38px);  border: 1.796px solid #ffffff; }
+.meaning-card-sentiment { left: calc(33.33% + 59px); border: 1.793px solid #ffffff; }
+.meaning-card-sentir    { left: calc(66.67% + 1px);  border: 1.793px solid #ffffff; }
+
+.meaning-card-img {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0.8;
+}
+.meaning-card-img-sentiment { opacity: 0.8; }
+.meaning-card-img-sentir    { opacity: 0.9; }
+
+.meaning-card-img img {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  max-width: none;
+}
+/* SCENT image: h=237.04%, top=-7.73% */
+.meaning-card-scent .meaning-card-img img {
+  height: 237.04%;
+  top: -7.73%;
+}
+/* SENTIMENT image: h=237.01%, top=-30.56% */
+.meaning-card-sentiment .meaning-card-img img {
+  height: 237.01%;
+  top: -30.56%;
+}
+/* SENTIR image: h=173.3%, top=-23.99% */
+.meaning-card-sentir .meaning-card-img img {
+  height: 173.3%;
+  top: -23.99%;
+}
+
+/* Card labels (positioned in 2400px container, overlap card bottom border) */
+.meaning-card-label {
+  position: absolute;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 700;
+  font-size: 42px;
+  letter-spacing: 0.84px;
+  line-height: 1.6;
+  color: #ffffff;
+  white-space: nowrap;
+  text-align: center;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+/* top: Figma bottom-[992px] in 2160px + translateY(100%) → top = 2160 - 992 = 1168px */
+.meaning-label-scent     { top: 1168px; left: calc(18.75% + 18.89px); }
+.meaning-label-sentiment { top: 1168px; left: calc(50% + 0.5px); }
+.meaning-label-sentir    { top: 1168px; left: calc(81.25% - 17.5px); }
+
+/* Card descriptions */
+.meaning-card-desc {
+  position: absolute;
+  line-height: 0;
+  text-align: center;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+/* top: Figma bottom-[924.67px] in 2160px + translateY(100%) → top = 2160 - 924.67 = 1235px */
+.meaning-desc-scent     { top: 1235px; left: calc(18.75% + 18.76px); width: 324px; }
+.meaning-desc-sentiment { top: 1235px; left: calc(50% + 0.5px);      width: 324px; }
+.meaning-desc-sentir    { top: 1235px; left: calc(81.25% - 17.5px);  width: 324px; }
+
+.meaning-card-desc p {
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+  white-space: nowrap;
+  letter-spacing: 0.32px;
+  color: #ffffff;
+}
+
+/* Bottom tagline: Figma bottom-[235px] in 2160px + translateY(100%) → top = 2160 - 235 = 1925px */
+.meaning-tagline {
+  position: absolute;
+  top: 1925px;
+  left: 50%;
+  transform: translateX(-50%);
+  line-height: 0;
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.meaning-tagline p {
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 1.6;
+  margin: 0;
+  letter-spacing: -0.56px;
+  color: #ffffff;
+}
+
+/* Bottom gradient overlay */
+.meaning-gradient-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 1920px;
+  height: 549px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.6));
+  pointer-events: none;
+}
+
+/* ── Reveal animations ── */
+.meaning-title {
+  transition: opacity 1.0s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 1.0s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body:not(.reveal-active) .meaning-title {
+  opacity: 0;
+  transform: translateY(-40px);
+}
+.reveal-active .meaning-title { transition-delay: 0.05s; }
+
+.meaning-text-left,
+.meaning-text-right {
+  transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body:not(.reveal-active) .meaning-text-left,
+body:not(.reveal-active) .meaning-text-right {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.reveal-active .meaning-text-left  { transition-delay: 0.2s; }
+.reveal-active .meaning-text-right { transition-delay: 0.3s; }
+
+
+/* ==========================================================================
+   Product Page — 1920×1080 single screen
+   ========================================================================== */
+
+.page-product {
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.product-viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.product-container {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform-origin: top center;
+  width: 1920px;
+  height: 1080px;
+  background-color: #ffffff;
+  transform: translateX(-50%) scale(var(--scale-factor));
+}
+
+/* ── Title stack ── */
+.product-title {
+  position: absolute;
+  font-family: 'Noto Serif Display', serif;
+  font-size: 180px;
+  letter-spacing: 3.6px;
+  line-height: 1.6;
+  color: #000000;
+  white-space: nowrap;
+  font-variation-settings: "CTGR" 100, "wdth" 100;
+  pointer-events: none;
+}
+/* node 51:105 — SENTI: left=40, top=40, medium (500) */
+.product-title-senti   { left: 40px;  top: 40px;  font-weight: 500; }
+/* node 51:106 — Eau de: left=4.17%+38=118, top=184, thin (100) */
+.product-title-eau     { left: 118px; top: 184px; font-weight: 100; }
+/* node 51:107 — Mémoire: left=118, top=336, light (300) */
+.product-title-memoire { left: 118px; top: 336px; font-weight: 300; }
+/* node 51:108 — 03–75: left=40, top=500, extralight (200) */
+.product-title-num     { left: 40px;  top: 500px; font-weight: 200; }
+
+/* ── Images ── */
+/* node 51:109 — bottles: left=41.67%+16=816, top=125, 290×273 */
+.product-img-bottles {
+  position: absolute;
+  left: calc(41.67% + 16px);
+  top: 125px;
+  width: 290px;
+  height: 273px;
+  overflow: hidden;
+}
+.product-img-bottles img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* node 51:121 — woman: left=58.33%+5=1125, top=125, 755×915 */
+.product-img-woman {
+  position: absolute;
+  left: calc(58.33% + 5px);
+  top: 125px;
+  width: 755px;
+  height: 915px;
+  overflow: hidden;
+}
+.product-img-woman img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Bottom-left text ── */
+/* node 51:110 — Lingering Notes: left=40, top=896, 24px light */
+.product-lingering-notes {
+  position: absolute;
+  left: 40px;
+  top: 896px;
+  font-family: 'Noto Serif Display', serif;
+  font-weight: 300;
+  font-size: 24px;
+  letter-spacing: 0.48px;
+  line-height: 1.6;
+  color: #000000;
+  font-variation-settings: "CTGR" 100, "wdth" 100;
+  pointer-events: none;
+}
+
+/* node 51:112 — description: left=40, top=944, 14px semibold */
+.product-desc {
+  position: absolute;
+  left: 40px;
+  top: 944px;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.28px;
+  line-height: 1.6;
+  color: #000000;
+  pointer-events: none;
+}
+.product-desc p { margin: 0; }
+
+/* node 51:113 — archive: left=40, top=1018, 14px regular */
+.product-archive {
+  position: absolute;
+  left: 40px;
+  top: 1018px;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.28px;
+  line-height: 1.6;
+  color: #000000;
+  pointer-events: none;
+}
+
+/* ── Notes list (center, opacity 0.4) ── */
+/* node 51:111 — left=41.67%+15=815, bottom=334, 24px regular */
+.product-notes-list {
+  position: absolute;
+  left: calc(41.67% + 15px);
+  top: 750px;
+  font-family: 'Noto Serif Display', serif;
+  font-weight: 400;
+  font-size: 24px;
+  letter-spacing: 0.48px;
+  line-height: 1.6;
+  color: #000000;
+  opacity: 0.4;
+  white-space: nowrap;
+  font-variation-settings: "CTGR" 100, "wdth" 100;
+  pointer-events: none;
+}
+.product-notes-list p { margin: 0; line-height: 1.6; }
+
+/* ── Reveal animations ── */
+.product-title,
+.product-img-bottles,
+.product-img-woman,
+.product-lingering-notes,
+.product-desc,
+.product-archive,
+.product-notes-list {
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+body:not(.reveal-active) .product-title,
+body:not(.reveal-active) .product-img-bottles,
+body:not(.reveal-active) .product-img-woman,
+body:not(.reveal-active) .product-lingering-notes,
+body:not(.reveal-active) .product-desc,
+body:not(.reveal-active) .product-archive,
+body:not(.reveal-active) .product-notes-list {
+  opacity: 0;
+  transform: translateY(16px);
+}
+.reveal-active .product-title-senti   { transition-delay: 0.05s; }
+.reveal-active .product-title-eau     { transition-delay: 0.10s; }
+.reveal-active .product-title-memoire { transition-delay: 0.15s; }
+.reveal-active .product-title-num     { transition-delay: 0.20s; }
+.reveal-active .product-img-bottles   { transition-delay: 0.10s; }
+.reveal-active .product-img-woman     { transition-delay: 0.05s; }
+.reveal-active .product-lingering-notes { transition-delay: 0.25s; }
+.reveal-active .product-desc          { transition-delay: 0.30s; }
+.reveal-active .product-archive       { transition-delay: 0.35s; }
+.reveal-active .product-notes-list    { transition-delay: 0.20s; }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   SHOP NATURE PAGE  (shop_nature.html)
+   Sticky-viewport + scroll-driven container translation
+   Container: 1920 × 3300px  /  scale = Math.min(vw/1920, vh/1080)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Body: must allow native scroll (overrides global body { overflow:hidden }) */
+.page-shopnature {
+  background: #ffffff;
+  overflow-y: auto !important;
+  height: auto !important;
+}
+
+/* ── Outer div — JS sets height = SN_CONTAINER_HEIGHT × scale ── */
+.sn-outer {
+  position: relative;
+  width: 100%;
+}
+
+/* ── Sticky viewport: pins at top, content scrolls inside ── */
+.sn-sticky {
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+/* ── Scaled design canvas — JS drives the translateY ── */
+.sn-container {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1920px;
+  height: 3300px;
+  background: #ffffff;
+  transform-origin: top center;
+  transform: translateX(-50%) scale(var(--scale-factor));
+}
+
+/* ════════════════════════════════
+   NAV HEADER  (outside container)
+   ════════════════════════════════ */
+.sn-header-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* height set by JS: 80px × scale */
+  z-index: 300;
+  overflow: hidden;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  /* Slide-up/down transition for hide/show */
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sn-header-wrap.sn-nav-hidden {
+  transform: translateY(-100%);
+}
+
+/* Inner 1920px container — same scale transform as design canvas */
+.sn-header-inner {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1920px;
+  transform-origin: top center;
+  transform: translateX(-50%) scale(var(--scale-factor));
+}
+
+/* ── Product sections wrapper — pushes all content below the nav bar ── */
+.sn-products-wrap {
+  position: absolute;
+  top: 80px;   /* nav bar height in design space (80px × scale = visual nav height) */
+  left: 0;
+  width: 100%;
+}
+
+/* ═══════════════════════════════════════
+   CATEGORY NAV  (inside scaled container)
+   JS counter-translates to keep it fixed
+   ═══════════════════════════════════════ */
+.sn-cats-group {
+  position: absolute;
+  left: 40px;
+  /* aligned to image list start: sn-products-wrap(80) + first image(63) = 143px */
+  top: 143px;
+}
+
+.sn-cat {
+  display: block;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 600;
+  font-size: 60px;
+  letter-spacing: 1.2px;
+  line-height: 1.24;   /* ≈74px — matches original Figma 74px step between items */
+  color: #000000;
+  white-space: nowrap;
+}
+.sn-cat--dim    { opacity: 0.4; }
+.sn-cat--active { opacity: 1; }
+
+/* ── Product images ── */
+.sn-img {
+  position: absolute;
+  overflow: hidden;
+}
+.sn-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.sn-img--wide {
+  left: calc(41.67% + 15px);
+  width: 910px;
+  height: 500px;
+}
+.sn-img--half {
+  width: 445px;
+  height: 500px;
+}
+
+/* ── GPS / coordinate overlay ── */
+.sn-gps {
+  position: absolute;
+  left: calc(41.67% + 35px);
+  width: 213px;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.28px;
+  line-height: 1.6;
+  color: #ffffff;
+  pointer-events: none;
+}
+.sn-gps p { margin: 0; }
+
+/* ── Product name ── */
+.sn-name {
+  position: absolute;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 0.48px;
+  line-height: 1.6;
+  color: #000000;
+  white-space: nowrap;
+}
+
+/* ── Product description ── */
+.sn-desc {
+  position: absolute;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.36px;
+  line-height: 1.6;
+  color: #000000;
+  white-space: nowrap;
+}
+
+/* ── Scent notes ── */
+.sn-notes {
+  position: absolute;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.28px;
+  line-height: 1.6;
+  color: #000000;
+  width: 135px;
+}
+
+/* ── Price (small — wide sections) ── */
+.sn-price {
+  position: absolute;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.28px;
+  line-height: 1.6;
+  color: #000000;
+  white-space: nowrap;
+}
+
+/* ── Price (large — two-column section) ── */
+.sn-price-lg {
+  position: absolute;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.36px;
+  line-height: 1.6;
+  color: #000000;
+  white-space: nowrap;
+}
+
+/* ── Entrance reveal animations ── */
+.sn-cat,
+.sn-img,
+.sn-name,
+.sn-desc,
+.sn-notes,
+.sn-price,
+.sn-price-lg,
+.sn-gps {
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+body:not(.reveal-active) .sn-cat,
+body:not(.reveal-active) .sn-img,
+body:not(.reveal-active) .sn-name,
+body:not(.reveal-active) .sn-desc,
+body:not(.reveal-active) .sn-notes,
+body:not(.reveal-active) .sn-price,
+body:not(.reveal-active) .sn-price-lg,
+body:not(.reveal-active) .sn-gps {
+  opacity: 0;
+  transform: translateY(14px);
+}
+.reveal-active .sn-cat      { transition-delay: 0.00s; }
+.reveal-active .sn-img      { transition-delay: 0.08s; }
+.reveal-active .sn-gps      { transition-delay: 0.14s; }
+.reveal-active .sn-name     { transition-delay: 0.18s; }
+.reveal-active .sn-desc     { transition-delay: 0.22s; }
+.reveal-active .sn-notes    { transition-delay: 0.26s; }
+.reveal-active .sn-price,
+.reveal-active .sn-price-lg { transition-delay: 0.30s; }
+
+/* ============================================================
+   MEANING PAGE  (Figma node 146-2, updated with nav)
+   Flow: about → brand → meaning
+   ============================================================ */
+
+body.page-meaning {
+  background: #ffffff;
+  --text-color: #000000;  /* override old .page-meaning { --text-color: #fff } */
+}
+
+/* Viewport — unique class name to avoid collision with index page */
+.mn-pg-view {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+/* 1920×1080 scaled canvas — unique class name to avoid collision */
+.mn-pg-wrap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1920px;
+  height: 1080px;
+  transform: translate(-50%, -50%) scale(var(--scale-factor));
+  transform-origin: center center;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* ── Images ──────────────────────────────────────────────────
+   Figma (updated): all images top: 80px  (below 80px nav bar)
+   ─────────────────────────────────────────────────────────── */
+.mn-img {
+  position: absolute;
+  overflow: hidden;
+}
+.mn-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* node 147:81 — small portrait  left:40  top:80  213×316 */
+.mn-img-1 { left: 40px;   top: 80px; width: 213px; height: 316px; }
+
+/* node 147:82 — tall far-right  left:calc(79.17%-7px)=1513  top:80  367×544 */
+.mn-img-2 { left: 1513px; top: 80px; width: 367px; height: 544px; }
+
+/* node 147:83 — tall centre-right  left:calc(58.33%+5px)=1125  top:80  368×545 */
+.mn-img-3 { left: 1125px; top: 80px; width: 368px; height: 545px; }
+
+/* ── Right-column text blocks (nodes 147:85–87) ─────────────
+   left: calc(54.17%-70px) = 970px
+   tops (calc from 50%=540px): 40 / 107 / 174
+   ─────────────────────────────────────────────────────────── */
+.mn-rtext {
+  position: absolute;
+  left: 970px;
+  font-family: var(--font-kr);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.24px;
+  color: #000000;
+  white-space: nowrap;
+}
+.mn-rtext p { margin: 0; line-height: 1.6; }
+.mn-rtext-1 { top: 80px;  }  /* aligned with photo top */
+.mn-rtext-2 { top: 147px; }
+.mn-rtext-3 { top: 214px; }
+
+/* ── Left-column text (nodes 147:89, 147:88, 147:84) ────────
+   left: calc(18.75%-87px) = 273px
+   ─────────────────────────────────────────────────────────── */
+
+/* Bold heading 16px — top: calc(50%-342px) = 198px */
+.mn-heading {
+  position: absolute;
+  left: 273px;
+  top: 238px;
+  font-family: var(--font-kr);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: -0.32px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+}
+
+/* Body 12px */
+.mn-body {
+  position: absolute;
+  left: 273px;
+  font-family: var(--font-kr);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.24px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+}
+.mn-body-1 { top: 300px; }  /* shifted +40px to align text bottom with mn-img-1 bottom */
+.mn-body-2 { top: 358px; }  /* bottom ≈ 358 + 38.4 = 396.4px ≈ mn-img-1 bottom (80+316=396px) */
+
+/* ── SENTI watermark (node 147:80) ──────────────────────────
+   Figma: left: calc(50%-1040px) = -80px
+          bottom: 679px  → top: 1080-679 = 401px
+
+   No transform on this element → overflow:hidden on .meaning-container
+   correctly clips the left bleed (x < 0) and bottom bleed (y > 1080)
+   ─────────────────────────────────────────────────────────── */
+.mn-senti {
+  position: absolute;
+  left: -80px;
+  top: 401px;
+  font-family: var(--font-display);
+  font-size: 620px;
+  font-weight: 500;
+  letter-spacing: 62px;
+  line-height: 1.6;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+
+/* ==========================================================================
+   Scent Page (No 01) — node 146:13
+   ========================================================================== */
+
+body.page-scent {
+  background: #ffffff;
+  --text-color: #000000;
+}
+
+.sc-pg-view {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.sc-pg-wrap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1920px;
+  height: 1080px;
+  transform: translate(-50%, -50%) scale(var(--scale-factor));
+  transform-origin: center center;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* Large "Scent" title — left:40 top:265 210px ExtraLight */
+.sc-title {
+  position: absolute;
+  left: 40px;
+  top: 265px;
+  font-family: var(--font-kr);
+  font-size: 210px;
+  font-weight: 200;
+  line-height: 1.6;
+  letter-spacing: 4.2px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+  z-index: 1;
+}
+
+/* Images */
+.sc-img {
+  position: absolute;
+  overflow: hidden;
+  z-index: 2;
+}
+.sc-img img {
+  position: absolute;
+  max-width: none;
+  display: block;
+}
+
+/* image 94 — center-left tall: left:815 top:151 368×573 */
+.sc-img-1 { left: 815px; top: 151px; width: 368px; height: 573px; }
+.sc-img-1 img { width: 127.53%; height: 109.11%; left: -13.79%; top: 0; }
+
+/* image 57 — right wide: left:1203 top:151 600×373 */
+.sc-img-2 { left: 1203px; top: 151px; width: 600px; height: 373px; }
+.sc-img-2 img { width: 100%; height: 214.79%; left: 0; top: -7.01%; }
+
+/* "No 01" large text — left:1203 top:428 240px Light (behind images) */
+.sc-no01 {
+  position: absolute;
+  left: 1203px;
+  top: 428px;
+  font-family: var(--font-kr);
+  font-size: 240px;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 9.6px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+  z-index: 1;
+}
+
+/* P-01 / P-02 labels */
+.sc-label {
+  position: absolute;
+  left: 195px;
+  font-family: var(--font-kr);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.72px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+}
+.sc-label-1 { top: 620px; }
+.sc-label-2 { top: 812px; }
+
+/* P-01 description */
+.sc-p1-desc {
+  position: absolute;
+  left: 428px;
+  top: 620px;
+  font-family: var(--font-kr);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.48px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+}
+.sc-p1-desc p { margin: 0; line-height: 1.6; }
+
+/* Three-column headings */
+.sc-col-heading {
+  position: absolute;
+  top: 812px;
+  font-family: var(--font-kr);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.64px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+}
+.sc-col-heading-1 { left: 428px; }
+.sc-col-heading-2 { left: 738px; }
+.sc-col-heading-3 { left: 1048px; }
+
+/* Three-column body text */
+.sc-col-body {
+  position: absolute;
+  top: 848px;
+  font-family: var(--font-kr);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.48px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+}
+.sc-col-body p { margin: 0; line-height: 1.6; }
+.sc-col-body-1 { left: 428px; }
+.sc-col-body-2 { left: 738px; }
+.sc-col-body-3 { left: 1048px; }
+
+/* Bottom words */
+.sc-bottom-word {
+  position: absolute;
+  bottom: 59px;
+  font-family: var(--font-kr);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.48px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+}
+.sc-bw-1 { left: 428px; }
+.sc-bw-2 { left: 738px; }
+.sc-bw-3 { left: 1048px; }
+.sc-bw-4 { left: 1358px; }
+.sc-bw-5 { left: 1668px; }
+
+
+/* ==========================================================================
+   Sentiment Page (No 02) — node 147:128
+   ========================================================================== */
+
+body.page-sentiment {
+  background: #ffffff;
+  --text-color: #000000;
+}
+
+.st-pg-view {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.st-pg-wrap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1920px;
+  height: 1080px;
+  transform: translate(-50%, -50%) scale(var(--scale-factor));
+  transform-origin: center center;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* Large "Sentiment" title — left:40 top:265 210px ExtraLight */
+.st-title {
+  position: absolute;
+  left: 40px;
+  top: 265px;
+  font-family: var(--font-kr);
+  font-size: 210px;
+  font-weight: 200;
+  line-height: 1.6;
+  letter-spacing: 4.2px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+  z-index: 1;
+}
+
+/* Images */
+.st-img {
+  position: absolute;
+  overflow: hidden;
+  z-index: 2;
+}
+.st-img img {
+  position: absolute;
+  max-width: none;
+  display: block;
+}
+
+/* image 57 — center-left short: left:815 top:151 368×210 */
+.st-img-1 { left: 815px; top: 151px; width: 368px; height: 210px; }
+.st-img-1 img { width: 100%; height: 234.26%; left: 0.02%; top: -117.26%; }
+
+/* image 61 — right wide: left:1203 top:151 600×373 */
+.st-img-2 { left: 1203px; top: 151px; width: 600px; height: 373px; }
+.st-img-2 img { width: 100%; height: 214.77%; left: 0; top: -32.89%; }
+
+/* "No 02" large text — left:1203 top:428 240px Light (behind images) */
+.st-no02 {
+  position: absolute;
+  left: 1203px;
+  top: 428px;
+  font-family: var(--font-kr);
+  font-size: 240px;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 9.6px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+  z-index: 1;
+}
+
+/* P-01 / P-02 labels */
+.st-label {
+  position: absolute;
+  left: 195px;
+  font-family: var(--font-kr);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.72px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+}
+.st-label-1 { top: 620px; }
+.st-label-2 { top: 812px; }
+
+/* P-01 description */
+.st-p1-desc {
+  position: absolute;
+  left: 428px;
+  top: 620px;
+  font-family: var(--font-kr);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.48px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+}
+
+/* Three-column headings */
+.st-col-heading {
+  position: absolute;
+  top: 812px;
+  font-family: var(--font-kr);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.64px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+}
+.st-col-heading-1 { left: 428px; }
+.st-col-heading-2 { left: 738px; }
+.st-col-heading-3 { left: 1048px; }
+
+/* Three-column body text */
+.st-col-body {
+  position: absolute;
+  top: 848px;
+  font-family: var(--font-kr);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.48px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+}
+.st-col-body-1 { left: 428px; }
+.st-col-body-2 { left: 738px; }
+.st-col-body-3 { left: 1048px; }
+
+/* Bottom words */
+.st-bottom-word {
+  position: absolute;
+  bottom: 59px;
+  font-family: var(--font-kr);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.48px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+}
+.st-bw-1 { left: 428px; }
+.st-bw-2 { left: 738px; }
+.st-bw-3 { left: 1048px; }
+.st-bw-4 { left: 1358px; }
+.st-bw-5 { left: 1668px; }
+
+
+/* ==========================================================================
+   Sentir Page (No 03) — node 147:172
+   ========================================================================== */
+
+body.page-sentir {
+  background: #ffffff;
+  --text-color: #000000;
+}
+
+.sr-pg-view {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.sr-pg-wrap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1920px;
+  height: 1080px;
+  transform: translate(-50%, -50%) scale(var(--scale-factor));
+  transform-origin: center center;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* Large "Sentir" title — left:40 top:265 210px ExtraLight */
+.sr-title {
+  position: absolute;
+  left: 40px;
+  top: 265px;
+  font-family: var(--font-kr);
+  font-size: 210px;
+  font-weight: 200;
+  line-height: 1.6;
+  letter-spacing: 4.2px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+  z-index: 1;
+}
+
+/* Images */
+.sr-img {
+  position: absolute;
+  overflow: hidden;
+}
+.sr-img img {
+  position: absolute;
+  max-width: none;
+  display: block;
+}
+
+/* image 57 — right bottom layer: left:1203 top:151 600×373 */
+.sr-img-1 { left: 1203px; top: 151px; width: 600px; height: 373px; z-index: 2; }
+.sr-img-1 img { width: 100%; height: 214.79%; left: 0; top: -107.36%; }
+
+/* image 87 — right mid layer (same position) */
+.sr-img-2 { left: 1203px; top: 151px; width: 600px; height: 373px; z-index: 3; }
+.sr-img-2 img { width: 100.04%; height: 201.07%; left: -0.02%; top: -42.31%; }
+
+/* image 92 — right top layer (same position) */
+.sr-img-3 { left: 1203px; top: 151px; width: 600px; height: 373px; z-index: 4; }
+.sr-img-3 img { width: 100%; height: 214.48%; left: 0; top: -0.04%; }
+
+/* image 93 — center-left: left:893 top:151 290×421 */
+.sr-img-4 { left: 893px; top: 151px; width: 290px; height: 421px; z-index: 4; }
+.sr-img-4 img { width: 118.53%; height: 109.04%; left: -9.41%; top: -0.07%; }
+
+/* "No 03" large text — left:1203 top:428 240px Light (behind images) */
+.sr-no03 {
+  position: absolute;
+  left: 1203px;
+  top: 428px;
+  font-family: var(--font-kr);
+  font-size: 240px;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 9.6px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+  z-index: 1;
+}
+
+/* P-01 / P-02 labels */
+.sr-label {
+  position: absolute;
+  left: 195px;
+  font-family: var(--font-kr);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.72px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+}
+.sr-label-1 { top: 620px; }
+.sr-label-2 { top: 812px; }
+
+/* P-01 description */
+.sr-p1-desc {
+  position: absolute;
+  left: 428px;
+  top: 620px;
+  font-family: var(--font-kr);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.48px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+}
+
+/* Three-column headings */
+.sr-col-heading {
+  position: absolute;
+  top: 812px;
+  font-family: var(--font-kr);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.64px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+}
+.sr-col-heading-1 { left: 428px; }
+.sr-col-heading-2 { left: 738px; }
+.sr-col-heading-3 { left: 1048px; }
+
+/* Three-column body text */
+.sr-col-body {
+  position: absolute;
+  top: 848px;
+  font-family: var(--font-kr);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.48px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+}
+.sr-col-body-1 { left: 428px; }
+.sr-col-body-2 { left: 738px; }
+.sr-col-body-3 { left: 1048px; }
+
+/* Bottom words */
+.sr-bottom-word {
+  position: absolute;
+  bottom: 59px;
+  font-family: var(--font-kr);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.48px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+}
+.sr-bw-1 { left: 428px; }
+.sr-bw-2 { left: 738px; }
+.sr-bw-3 { left: 1048px; }
+.sr-bw-4 { left: 1358px; }
+.sr-bw-5 { left: 1668px; }

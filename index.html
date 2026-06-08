@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SENTI — Premium Niche Perfume</title>
+  <meta name="description" content="SENTI Premium Niche Perfume. Scent, Sentiment, Sentir. Three worlds, one brand. Based in Seoul, Korea.">
+  
+  <!-- Preconnect Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Load Noto Serif, Noto Serif Display, and Noto Serif KR -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&family=Noto+Serif+KR:wght@200..900&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-transitioning">
+
+  <!-- Main Poster Composition -->
+  <main class="poster-viewport">
+    <div class="poster-container">
+
+      <!-- Header Navigation (scaled inside container — same as about/product) -->
+      <header class="site-header">
+        <a href="index.html" class="brand-logo" id="logo-senti">SENTI</a>
+        <nav class="nav-menu" aria-label="Main Navigation">
+          <a href="about.html" class="nav-link" id="nav-about">About</a>
+          <a href="collection_intro.html" class="nav-link" id="nav-collection">Collection</a>
+          <a href="product.html" class="nav-link" id="nav-product">Product</a>
+        </nav>
+      </header>
+      
+      <!-- Typographic Coordinate Background (Big Letters) -->
+      <div class="bg-letters-container" aria-hidden="true">
+        <span class="bg-letter letter-coord" id="coord-3">3°</span>
+        <span class="bg-letter letter-display" id="coord-s">S</span>
+        <span class="bg-letter letter-coord" id="coord-75">75</span>
+        <span class="bg-letter letter-display" id="coord-n">N</span>
+      </div>
+
+      <!-- Overlapping Images -->
+      <div class="images-container">
+        <!-- Top Left Image -->
+        <div class="img-wrapper img-top-left" id="panel-top-left">
+          <img src="assets/rect7.png" alt="Scenery of a sunset field filled with flowers" loading="eager">
+        </div>
+        
+        <!-- Bottom Middle Image -->
+        <div class="img-wrapper img-bottom-middle" id="panel-bottom-middle">
+          <img src="assets/rect9.png" alt="A person sitting at a wooden table in a park reading a book" loading="eager">
+        </div>
+
+        <!-- Top Right Image -->
+        <div class="img-wrapper img-top-right" id="panel-top-right">
+          <img src="assets/rect8.png" alt="A person running in a field at sunset carrying a guitar" loading="eager">
+        </div>
+      </div>
+
+      <!-- Content Text Overlays -->
+      <div class="content-overlays">
+        <!-- Top Right Info -->
+        <div class="text-block info-top-right" id="block-info-top">
+          <p class="heading">SENTI PREMIUM</p>
+          <p class="sub-heading">NICHE PERFUME SEOUL, KOREA</p>
+        </div>
+
+        <!-- Bottom Left Info -->
+        <div class="text-block info-bottom-left" id="block-info-bottom">
+          <p class="est-label">EST.</p>
+          <p class="brand-words">2025 SCENT · SENTIMENT · SENTIR</p>
+          <p class="brand-tagline">THREE WORLDS, ONE BRAND</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Interactive Logic -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SENTI — Collection</title>
+  <meta name="description" content="SENTI Premium Niche Perfume. Scent, Sentiment, Sentir. Explore our collection: Nature, City, Memoir, Silence, and Linger.">
+  
+  <!-- Preconnect Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Load Noto Serif, Noto Serif Display, and Noto Serif KR -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&family=Noto+Serif+KR:wght@200..900&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-collection theme-nature page-transitioning">
+
+  <!-- Fullscreen Background Image Overlay for Memoir/Linger -->
+  <div class="collection-bg-overlay" id="bg-overlay">
+    <div class="collection-bg-mask"></div>
+  </div>
+
+  <!-- Collection View Section -->
+  <main class="collection-viewport">
+    <div class="collection-container">
+      
+      <!-- Scaled Header Navigation -->
+      <header class="site-header">
+        <a href="index.html" class="brand-logo" id="logo-senti">SENTI</a>
+        <nav class="nav-menu" aria-label="Main Navigation">
+          <a href="about.html" class="nav-link" id="nav-about">About</a>
+          <a href="collection_intro.html" class="nav-link" id="nav-collection">Collection</a>
+          <a href="product.html" class="nav-link" id="nav-product">Product</a>
+        </nav>
+      </header>
+
+      <!-- Center Image Frame -->
+      <div class="collection-center-image-wrapper nature" id="center-image-wrapper">
+        <img src="assets/collection_nature.png" alt="Nature Collection Scenery" id="center-image">
+      </div>
+
+      <!-- Description Block (coordinates applied dynamically in JS via classes) -->
+      <div class="collection-desc-container nature active" id="desc-container">
+        <p>The smell left by the forest,</p>
+        <p>The place where the rain has gone,</p>
+        <p>in the way nature remembers.</p>
+      </div>
+
+      <!-- Collection Menu List (Right Bottom) -->
+      <div class="collection-menu-container">
+        <p class="collection-menu-title">SENTI Collection</p>
+        <div class="collection-menu-list">
+          <!-- Active Dot Indicator -->
+          <div class="collection-menu-dot" id="menu-dot"></div>
+          
+          <div class="collection-menu-item active" data-index="0">
+            <span class="menu-label">Nature</span>
+            <span class="menu-desc">A sense left by nature</span>
+          </div>
+          <div class="collection-menu-item" data-index="1">
+            <span class="menu-label">City</span>
+            <span class="menu-desc">An urban touch</span>
+          </div>
+          <div class="collection-menu-item" data-index="2">
+            <span class="menu-label">Memoir</span>
+            <span class="menu-desc">A memory carved into one's body.</span>
+          </div>
+          <div class="collection-menu-item" data-index="3">
+            <span class="menu-label">Silence</span>
+            <span class="menu-desc">The place where the sound is still.</span>
+          </div>
+          <div class="collection-menu-item" data-index="4">
+            <span class="menu-label">Linger</span>
+            <span class="menu-desc">Things that don't go away.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Interactive Logic -->
+  <script src="script.js"></script>
+</body>
+</html>
